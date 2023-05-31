@@ -1,5 +1,28 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
 h1 {
   padding-top: 50px;
   font-size: 48px;
+  text-align: center;
+}
+.flexx-container{
+display:flex;
+flex-direction: row;
+padding-left: 2px;
+
+}
+
+.underline{
+  text-decoration: underline;
+}
+.container-contact{
+  width: 100vw;
   text-align: center;
 }
