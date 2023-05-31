@@ -1,12 +1,36 @@
+:root {
+  --primary-color: #8b9781; /*var(--primary-color)*/
+  --secondary-color: #d9d9d9; /*var(--secondary-color)*/
+  --third-color: #0b3e27; /*var(--third-color)*/
+
+  --font-color-noir: black; /*color: var(--font-color-noir)*/
+  --font-color-orange: #ffa500; /*color: var(--font-color-orange)*/
+  --font-color-rouge: #ff0000; /*color: var(--font-color-rouge)*/
+  --font-color-blanche: white; /*color: var(--font-color-blanche)*/
+
+  --font-primary: "Inter", sans-serif; /* font-family:var(--font-primary)*/
+}
+
 .topnav {
-  background-color: #000000;
+  background-color: var(--primary-color);
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .topnav .brand {
   text-align: center;
-  color: rgb(207, 84, 18);
+  color: var(--font-color-noir);
   text-decoration: none;
+  font-size: 3rem;
+}
+
+.topnav img {
+  width: 4rem;
+  height: 3rem;
+  padding-right: 1rem;
 }
 
 .sidenav {
@@ -15,7 +39,7 @@
   z-index: 1; /* Stay on top */
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
+  background-color: var(--primary-color);
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 80px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -34,10 +58,12 @@
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
-  color: rgb(207, 84, 18);
+  font-size: 32px;
+  color: var(--font-color-blanche);
   display: block;
   transition: 0.3s;
+  text-align: center;
+  font-family: var(--font-primary);
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -52,13 +78,56 @@
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
-  color: rgb(207, 84, 18);
+  color: var(--font-color-noir);
 }
 .topnav .openbtn {
   font-size: 30px;
   cursor: pointer;
-  color: rgb(207, 84, 18);
+  color: var(--font-color-noir);
 }
+
+.sidenav .copywrite {
+  background-color: var(--font-color-noir);
+  text-align: center;
+  color: var(--font-color-blanche);
+  font-size: 1rem;
+  opacity: 0.25;
+}
+.sidenav .copywrite a {
+  color: rgb(51, 228, 196);
+  font-size: 1rem;
+}
+
+.sidenav .social-links a {
+  padding: 1rem;
+  color: var(--font-color-blanche);
+  font-size: 3rem;
+}
+
+footer {
+  background-color: #1e1e1ed1;
+  opacity: 0.82;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .brand {
+  font-size: 3rem;
+  color: var(--font-color-blanche);
+  text-align: center;
+  padding-left: 6.1rem;
+}
+
+footer .contacts {
+  font-size: 1rem;
+  color: var(--font-color-blanche);
+  text-align: left;
+  text-decoration: none;
+  padding-right: 1rem;
+}
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left 0.5s;
