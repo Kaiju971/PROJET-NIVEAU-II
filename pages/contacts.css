@@ -1,3 +1,14 @@
+html{
+  width: 100%;
+}
+
+.container-contact{
+  width: 60%;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+} 
+
 *,
 *::before,
 *::after{
@@ -13,16 +24,36 @@ h1 {
   text-align: center;
 }
 .flexx-container{
-display:flex;
-flex-direction: row;
-padding-left: 2px;
-
+  display:flex;
+  flex-direction: row;
+  padding-left: 2px;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: var(--color-maroon);
+  
 }
 
 .underline{
   text-decoration: underline;
 }
-.container-contact{
-  width: 100vw;
+form{
+  margin-top: 1rem;
+  background-color: var(--color-maroon);
   text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+form #message{
+width: 70%;
+height: 100%;
+}
+form .button{
+  background-color: var(--color-maroon);
+  width: 40%;
+  border-radius: 10px;
+}
+
+form .input{
+  width: 70%;
 }

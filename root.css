@@ -2,11 +2,14 @@
   --primary-color: #8b9781; /*var(--primary-color)*/
   --secondary-color: #d9d9d9; /*var(--secondary-color)*/
   --third-color: #0b3e27; /*var(--third-color)*/
+  --color-maroon: rgba(199, 129, 92, 1);/*var(--color-maroon)*/
+
 
   --font-color-noir: black; /*color: var(--font-color-noir)*/
   --font-color-orange: #ffa500; /*color: var(--font-color-orange)*/
   --font-color-rouge: #ff0000; /*color: var(--font-color-rouge)*/
   --font-color-blanche: white; /*color: var(--font-color-blanche)*/
+  
 
   --font-primary: "Inter", sans-serif; /* font-family:var(--font-primary)*/
 }

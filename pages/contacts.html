@@ -29,24 +29,26 @@
     <div w3-include-html="../includes/header.html"></div>
 <div class="container-contact">
     <h1>CONTACTS</h1>
-    <div>
+    
       <form>
-          <label for="nom">nom:</label><br>
-          <input type="text" id="nom" name="nom" value="nom">
+        <h5>Une question ? un problème ? N’hésiter pas à nous envoyer un message </h5>
+          <label for="nom">nom:</label>
+          <input type="text" id="nom" name="nom" value="" class = "input"/>
           <br />
           <label for="email">email:</label>
+          <input type="text" id="email" name="email" value="" class = "input"/>
           <br />
-          <input type="text" id="email" name="email" value="">
           <label for="sujet">sujet:</label>
-          <br />
-          <input type="text" id="sujet" name="sujet" value="sujet">
+          <input type="text" id="sujet" name="sujet" value="" class = "input"/>
           <br />
           <label for="message">message:</label>
           <br />
-          <input type="text" id="message" name="message" value="">
-          <input type="Envoyer mon message" value="Envoyer mon message">
+          <!-- <textarea type="text" id="message" name="message" value="" rows="5" cols="10"></textarea> -->
+          <textarea name="message" id="" cols="60" rows="3"></textarea>
+          <br />
+          <button class="button">Envoyer mon message</button>
       </form>
-  </div> 
+ 
     <div class="flexx-container">
       <div >
         <p class="underline">Adresse:</p>
@@ -56,9 +58,9 @@
           <span class="underline">Telephone :</span>
           <p>01.23.45.56.78</p>
       </div>
-      <span>
+      <div>
          <img src="../images/confort_1.jpeg" width="300px" height="300px" alt="">
-      </span>
+      </div>
   </div>
 </div>
     <div w3-include-html="../includes/footer.html"></div>
