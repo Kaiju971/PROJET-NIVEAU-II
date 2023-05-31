@@ -28,3 +28,12 @@ function includeHTML() {
     }
   }
 }
+
+function openNav() {
+  var x = document.getElementById("mySidenav");
+  if (x.className === "sidenav close-sidenav") {
+    x.className += "sidenav open-sidenav";
+  } else {
+    x.className = "sidenav close-sidenav";
+  }
+}
