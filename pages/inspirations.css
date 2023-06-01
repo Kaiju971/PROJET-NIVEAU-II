@@ -1,5 +1,31 @@
 h1 {
-  padding-top: 50px;
-  font-size: 48px;
+  font-size: 36px;
   text-align: center;
+  padding-bottom: 3rem;
+}
+
+.conteiner-inspiration {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.conteiner-inspiration img {
+  place-self: center stretch;
+}
+
+.container-prod {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 10% 45% 45%;
+  place-self: center stretch;
+}
+
+.container-prod .cell {
+  object-fit: cover;
+  text-align: center;
+}
+.container-prod h1 {
+  grid-column: 1 / span 3;
+  place-self: center stretch;
 }
