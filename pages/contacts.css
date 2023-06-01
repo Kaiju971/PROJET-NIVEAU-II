@@ -34,13 +34,20 @@ h1 {
   
 }
 
+.flexx-container div h3{
+  padding-top: 3rem;
+  text-align: center;
+}
 .underline{
   text-decoration: underline;
 }
+.underline p{
+  text-align: center;
+}
+
 form{
   margin-top: 1rem;
   background-color: var(--color-maroon);
-  
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
@@ -68,4 +75,12 @@ form label, .label{
 
 form .label{
   padding-left: 4.8rem;
+}
+
+img{
+  margin-left: 38%;
+}
+p{
+  margin-top: 0.2rem;
+  flex: content;
 }
