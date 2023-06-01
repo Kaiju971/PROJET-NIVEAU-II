@@ -9,6 +9,17 @@ html{
   margin-right: 20%;
 } 
 
+.header-image {
+  /* display: block; */
+  /* object-fit: cover;
+ 
+  width:100%; */
+  background: url("../images/header_contact.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 500px;
+}
+
 *,
 *::before,
 *::after{
@@ -38,6 +49,9 @@ h1 {
   padding-top: 3rem;
   text-align: center;
 }
+
+
+
 .underline{
   text-decoration: underline;
 }
