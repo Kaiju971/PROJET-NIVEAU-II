@@ -27,7 +27,7 @@
   </head>
   <body>
     <div w3-include-html="../includes/header.html"></div>
-<div class="container-contact">
+<div class="container-contact" >
     <h1>CONTACTS</h1>
     
       <form>
@@ -35,16 +35,21 @@
           <label for="nom">nom:</label>
           <input type="text" id="nom" name="nom" value="" class = "input"/>
           <br />
+          <br />
           <label for="email">email:</label>
           <input type="text" id="email" name="email" value="" class = "input"/>
+          <br />
           <br />
           <label for="sujet">sujet:</label>
           <input type="text" id="sujet" name="sujet" value="" class = "input"/>
           <br />
-          <label for="message">message:</label>
           <br />
-          <!-- <textarea type="text" id="message" name="message" value="" rows="5" cols="10"></textarea> -->
-          <textarea name="message" id="" cols="60" rows="3"></textarea>
+          <div class="label">
+            message:
+          </div>
+          <!-- <label for="message"></label> -->
+          <textarea name="message" id=""></textarea>
+          <br />
           <br />
           <button class="button">Envoyer mon message</button>
       </form>
@@ -59,7 +64,7 @@
           <p>01.23.45.56.78</p>
       </div>
       <div>
-         <img src="../images/confort_1.jpeg" width="300px" height="300px" alt="">
+         <img src="../images/Map.png" width="300px" height="300px" alt="">
       </div>
   </div>
 </div>
@@ -68,4 +73,5 @@
   <script>
     includeHTML();
   </script>
+   <script src="./contact.js"></script>
 </html>
