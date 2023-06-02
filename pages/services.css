@@ -3,3 +3,16 @@ h1 {
   font-size: 48px;
   text-align: center;
 }
+.caption {
+  overflow: hidden;
+}
+.caption-text {
+  color: white;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  transition: transform 400ms ease;
+}
+.caption-image:hover + .caption-text,
+.caption-text:hover {
+  transform: translateX(-100%);
+}
