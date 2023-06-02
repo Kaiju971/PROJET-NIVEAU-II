@@ -3,16 +3,21 @@ h1 {
   font-size: 48px;
   text-align: center;
 }
-.caption {
+.caption{
   overflow: hidden;
+  width: 80%;
 }
-.caption-text {
+.caption-image1{
+  overflow: hidden; 
+  width: 80%;
+}
+.caption-image2 {
   color: white;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.4);
-  transition: transform 400ms ease;
+  transition: transform 1400ms ease;
 }
-.caption-image:hover + .caption-text,
-.caption-text:hover {
-  transform: translateX(-100%);
+.caption-image2:hover{
+  transform: translateY(-100%);
+}
+img{
+  background-image: cov;
 }
