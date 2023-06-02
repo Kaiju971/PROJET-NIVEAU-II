@@ -1,14 +1,12 @@
 [
   {
-    "index": {
-      "id": "01",
-      "name": "header",
-      "image": "../images/header.jpeg",
-      "discription": "",
-      "price": "",
-      "page": "index",
-      "type": ""
-    }
+    "id": "01",
+    "name": "header",
+    "image": "../images/header.jpeg",
+    "discription": "",
+    "price": "",
+    "page": "index",
+    "type": ""
   },
   {
     "id": "02",
@@ -31,7 +29,7 @@
   {
     "id": "04",
     "name": "header_inspi",
-    "image": "../images/header_inspi.jpeg",
+    "image": "../images/header_inspi1.jpg",
     "discription": "",
     "price": "",
     "page": "inspiration",
@@ -49,7 +47,7 @@
   {
     "id": "06",
     "name": "img6",
-    "image": "../images/img6.jpeg",
+    "image": "../images/img6.jpg",
     "discription": "",
     "price": "",
     "page": "inspiration",

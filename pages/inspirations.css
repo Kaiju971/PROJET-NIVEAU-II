@@ -1,16 +1,22 @@
+body {
+  width: 100%;
+  height: 100vh;
+}
+
 h1 {
   font-size: 36px;
   text-align: center;
   padding-bottom: 3rem;
 }
 
-.conteiner-inspiration {
+.container-inspiration {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
+  border: solid red;
 }
 
-.conteiner-inspiration img {
+.container-inspiration img {
   place-self: center stretch;
 }
 
@@ -19,12 +25,20 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 10% 45% 45%;
   place-self: center stretch;
+  height: calc(100vh - 20px);
+  border: solid blue;
 }
 
 .container-prod .cell {
   object-fit: cover;
   text-align: center;
 }
+
+.container-prod .cell img {
+  width: 400px;
+  height: 200px;
+}
+
 .container-prod h1 {
   grid-column: 1 / span 3;
   place-self: center stretch;

@@ -22,6 +22,7 @@ const GridCell = (array, container) => {
 };
 
 let products = [];
+
 var requestURL = "../src/database.json";
 var request = new XMLHttpRequest();
 request.open("GET", requestURL);
@@ -34,24 +35,40 @@ request.onload = () => {
 
 //page inspiration
 const showInspirations = (array) => {
-  const containerInspiration = document.querySelector(".conteiner-inspiration");
+  const containerInspiration = document.querySelector(".container-inspiration");
 
   const inspiration = array?.filter(
     (product) => product.page === "inspiration"
   );
-  console.log(inspiration);
-  if (containerInspiration) {
-    containerInspiration.innerHTML = `<img src=${element.image} alt="big image inspir" />`;
 
-    // <div class="container-prod" id="inspir">
-    //   <h1>Nos inspirations</h1>
-    //   <div class="cell">test21</div>
-    //   <div class="cell">test22</div>
-    //   <div class="cell">test23</div>
-    //   <div class="cell">test31</div>
-    //   <div class="cell">test32</div>
-    //   <div class="cell">test33</div>
-    // </div>`;
+  if (containerInspiration) {
+    const image = document.createElement("div");
+    image.style.background = `url(${inspiration[0].image})`;
+    image.style.backgroundSize = `cover`;
+    image.style.backgroundRepeat = `no-repeat`;
+    containerInspiration.appendChild(image);
+
+    const containerProd = document.createElement("div");
+    containerProd.className = "container-prod";
+    const title = document.createElement("h1");
+    title.textContent = "Nos inspirations";
+    containerProd.appendChild(title);
+
+    const inspiration1 = inspiration?.filter((product, index) => index > 0);
+
+    inspiration1.map((element) => {
+      let cell = document.createElement("div");
+      cell.className = "cell";
+      const imag = document.createElement("img");
+      imag.src = element.image;
+      imag.width = "400px";
+      imag.height = "200px";
+      cell.appendChild(imag);
+      containerProd.appendChild(cell);
+    });
+
+    containerInspiration.appendChild(containerProd);
+    containerInspiration.innerHTML = containerInspiration.innerHTML + `</div>`;
   }
 };
 
