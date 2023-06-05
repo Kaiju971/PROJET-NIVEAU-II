@@ -19,7 +19,7 @@
       src="https://kit.fontawesome.com/f6b2d7d8bd.js"
       crossorigin="anonymous"
     ></script>
-    <link type="text/css" rel="stylesheet" href="aproposdenous.css" />
+    <link type="text/css" rel="stylesheet" href="contacts.css" />
 
     <link rel="stylesheet" href="./contacts.css" />
     <link rel="stylesheet" href="../root.css" />
@@ -27,11 +27,53 @@
   </head>
   <body>
     <div w3-include-html="../includes/header.html"></div>
-
-    <h1>CONTACTS</h1>
+    <div class="header-image">
+      <!-- <img src="../images/header_contact.jpg"  alt=""> -->
+    </div>
+<div class="container-contact" >
+  
+    <h4>Nous Contacter</h4>
+    
+      <form>
+        <h5>Une question ? un problème ? N’hésiter pas à nous envoyer un message </h5>
+          <label for="nom">nom:</label>
+          <input type="text" id="nom" name="nom" value="" class = "input"/>
+          <br />
+          <br />
+          <label for="email">email:</label>
+          <input type="text" id="email" name="email" value="" class = "input"/>
+          <br />
+          <br />
+          <label for="sujet">sujet:</label>
+          <input type="text" id="sujet" name="sujet" value="" class = "input"/>
+          <br />
+          <br />
+          <div class="label">
+            message:
+          </div>
+          <!-- <label for="message"></label> -->
+          <textarea name="message" id=""></textarea>
+          <br />
+          <br />
+          <button class="button">Envoyer mon message</button>
+      </form>
+    
+    <div class="flexx-container">
+      <div >
+        <h3 class="underline">Adresse:</h3>
+          <p>120 rue des Chantilly</p> 
+          <h3 class="underline">Telephone :</h3>
+          <p>01.23.45.56.78</p>
+      </div>
+      <div>
+         <img src="../images/Map.png" width="400px" height="300px" alt="">
+      </div>
+  </div>
+  </div>
     <div w3-include-html="../includes/footer.html"></div>
   </body>
   <script>
     includeHTML();
   </script>
+   <script src="./contact.js"></script>
 </html>

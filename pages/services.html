@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>A propos de nous</title>
+    <title>nos services</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -19,19 +19,42 @@
       src="https://kit.fontawesome.com/f6b2d7d8bd.js"
       crossorigin="anonymous"
     ></script>
-    <link type="text/css" rel="stylesheet" href="aproposdenous.css" />
+    <link type="text/css" rel="stylesheet" href="services.css" />
 
-    <link rel="stylesheet" href="./contacts.css" />
+    <link rel="stylesheet" href="./services.css" />
     <link rel="stylesheet" href="../root.css" />
     <script src="../index.js"></script>
   </head>
   <body>
     <div w3-include-html="../includes/header.html"></div>
 
-    <h1>Nos services</h1>
+    <h1>nos services</h1>
+    <div class="items">
+      <div class="item active">
+        <img src="../images/header_contact.jpeg">
+      </div>
+      <div class=" item next">
+        <img src="../images/servicescard.jpg">
+      </div>
+      <div class="item">
+        <img src="http://via.placeholder.com/500x500">
+      </div>
+      <div class="item">
+        <img src="http://via.placeholder.com/500x500">
+      </div>
+      <div class="item prev">
+        <img src="http://via.placeholder.com/500x500">
+      </div>
+      <div class="button-container">
+        <div class="button"><i class="fas fa-angle-left"></i></div>
+        <div class="button"><i class="fas fa-angle-right"></i></div>
+      </div>
+    </div>
+    
     <div w3-include-html="../includes/footer.html"></div>
   </body>
   <script>
     includeHTML();
   </script>
+  <script src="./services.js"></script>
 </html>
