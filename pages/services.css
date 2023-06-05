@@ -1,5 +1,5 @@
 h1 {
-  padding-top: 50px;
+  padding-top: 350px;
   font-size: 48px;
   text-align: center;
 }
@@ -7,14 +7,16 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  
 }
 
 .items {
   position: absolute;
-  top: 50%;
+  top: 285px;
   left: 50%;
   transform: translate(-50%, -50%);
   user-select: none;
+ height: 1000px;
 }
 
 .items .item {
@@ -22,9 +24,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  border-radius: 10%;
+  width: 70vw;
+  height: 60vh;
   overflow: hidden;
   transition: all 300ms ease-in-out;
   z-index: -1;
@@ -96,4 +97,10 @@ body {
 
 .button-container .button:nth-child(2) {
   float: right;
+}
+
+.foot{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
