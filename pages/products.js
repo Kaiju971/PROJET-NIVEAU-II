@@ -21,15 +21,13 @@ const GridCell = (array, container) => {
   container.innerHTML = cell;
 };
 
-let products = [];
-
 var requestURL = "../src/database.json";
 var request = new XMLHttpRequest();
 request.open("GET", requestURL);
 request.responseType = "json";
 request.send();
 request.onload = () => {
-  products = request.response;
+  const products = request.response;
   showInspirations(products);
 };
 
@@ -40,6 +38,10 @@ const showInspirations = (array) => {
   const inspiration = array?.filter(
     (product) => product.page === "inspiration"
   );
+
+  const openImage = (image) => {
+    image;
+  };
 
   if (containerInspiration) {
     const image = document.createElement("div");
@@ -60,15 +62,22 @@ const showInspirations = (array) => {
       let cell = document.createElement("div");
       cell.className = "cell";
       const imag = document.createElement("img");
+      imag.className = "img" + element.id;
       imag.src = element.image;
-      imag.width = "400px";
-      imag.height = "200px";
+      let cellTexte = document.createElement("h4");
+      cellTexte.textContent = element.name;
       cell.appendChild(imag);
+      cell.appendChild(cellTexte);
       containerProd.appendChild(cell);
     });
 
     containerInspiration.appendChild(containerProd);
     containerInspiration.innerHTML = containerInspiration.innerHTML + `</div>`;
+
+    inspiration1.map((element) => {
+      const myImage = document.querySelector(".img" + element.id);
+      myImage.addEventListener("click", () => openImage(element));
+    });
   }
 };
 

@@ -37,7 +37,7 @@
   },
   {
     "id": "05",
-    "name": "img1",
+    "name": "Chambre Zen",
     "image": "../images/img1.jpeg",
     "discription": "",
     "price": "",
@@ -46,7 +46,7 @@
   },
   {
     "id": "06",
-    "name": "img6",
+    "name": "Cuisine Moderne",
     "image": "../images/img6.jpg",
     "discription": "",
     "price": "",
@@ -55,7 +55,7 @@
   },
   {
     "id": "07",
-    "name": "img4",
+    "name": "Salon Élégance",
     "image": "../images/img4.jpeg",
     "discription": "",
     "price": "",
@@ -64,7 +64,7 @@
   },
   {
     "id": "08",
-    "name": "img5",
+    "name": "Salon détente",
     "image": "../images/img5.jpeg",
     "discription": "",
     "price": "",
@@ -73,7 +73,7 @@
   },
   {
     "id": "09",
-    "name": "img3",
+    "name": "Salon Bohème",
     "image": "../images/img3.jpeg",
     "discription": "",
     "price": "",
@@ -82,7 +82,7 @@
   },
   {
     "id": "10",
-    "name": "header_inspiration",
+    "name": "Chambre Urbainen",
     "image": "../images/header_inspiration.jpeg",
     "discription": "",
     "price": "",

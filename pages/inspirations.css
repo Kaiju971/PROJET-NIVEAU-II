@@ -3,17 +3,10 @@ body {
   height: 100vh;
 }
 
-h1 {
-  font-size: 36px;
-  text-align: center;
-  padding-bottom: 3rem;
-}
-
 .container-inspiration {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  border: solid red;
 }
 
 .container-inspiration img {
@@ -26,20 +19,28 @@ h1 {
   grid-template-rows: 10% 45% 45%;
   place-self: center stretch;
   height: calc(100vh - 20px);
-  border: solid blue;
 }
 
 .container-prod .cell {
-  object-fit: cover;
+  padding-top: 5rem;
   text-align: center;
+  display: inline-block;
 }
 
 .container-prod .cell img {
-  width: 400px;
-  height: 200px;
+  width: 60%;
+  height: 80%;
+  border-radius: 10%;
 }
 
 .container-prod h1 {
   grid-column: 1 / span 3;
   place-self: center stretch;
+  padding-top: 4rem;
+  text-align: center;
+}
+
+.container-prod h4 {
+  padding: 1rem;
+  text-align: center;
 }
