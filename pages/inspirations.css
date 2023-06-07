@@ -24,13 +24,15 @@ body {
 .container-prod .cell {
   padding-top: 5rem;
   text-align: center;
-  display: inline-block;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
 }
 
 .container-prod .cell img {
-  width: 60%;
-  height: 80%;
-  border-radius: 10%;
+  width: 25rem;
+  height: 18rem;
+  border-radius: 5%;
 }
 
 .container-prod h1 {
@@ -43,4 +45,9 @@ body {
 .container-prod h4 {
   padding: 1rem;
   text-align: center;
+}
+
+.container-inspiration .container-prod .scale {
+  text-align: center;
+  border-radius: 0;
 }
