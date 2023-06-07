@@ -4,14 +4,15 @@
   --third-color: #0b3e27; /*var(--third-color)*/
   --color-maroon: rgba(199, 129, 92, 1);/*var(--color-maroon)*/
   --color-maroon1: #B4724FF0;/*var(--color-maroon)*/
-
+  --color-vert-clair1:  #B7B7A4;/*var(--color-vert-clair1)*/
   --font-color-noir: black; /*color: var(--font-color-noir)*/
   --font-color-orange: #ffa500; /*color: var(--font-color-orange)*/
   --font-color-rouge: #ff0000; /*color: var(--font-color-rouge)*/
   --font-color-blanche: white; /*color: var(--font-color-blanche)*/
-  
-
+  --font-color-kaki: #A5A58D; /*color: var(--font-color-kaki)*/  
+  --font-color-kaki2: #6B705C; /*color: var(--font-color-kaki2)*/
   --font-primary: "Inter", sans-serif; /* font-family:var(--font-primary)*/
+
 }
 
 .topnav {
@@ -25,7 +26,7 @@
   float: left;
   width: 100%;
 }
-
+ 
 .topnav .brand {
   text-align: center;
   color: var(--font-color-noir);
