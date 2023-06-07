@@ -22,11 +22,11 @@ const showPage = (array, page, container, titleMain) => {
 
   const openImage = (imageId) => {
     const idPict = ".img" + imageId;
-    const idPictWithoutDot = idPict.replace(".", "");
-    const idPictScale = idPictWithoutDot + " scale";
 
-    const picture = document.querySelector(idPict);
+    const picture = document.querySelector(idPict); //cell-img
+    console.log(picture);
     const discr = picture.querySelector(".discription");
+    console.log(discr);
     const pictures = document.querySelectorAll("img");
     const pictArray = Array.from(pictures);
 
@@ -77,17 +77,22 @@ const showPage = (array, page, container, titleMain) => {
       });
 
       const pictures1 = pictArray?.filter(
-        (item, index) => index > 0 && item.className !== idPictWithoutDot
+        (item, index) => index > 0 && item.className.includes("scale")
       );
 
       pictures1.forEach((element) => {
         element.style.filter = "blur(0px)";
+        element.style.zIndex = "0";
       });
       textArray.forEach((element) => {
         element.style.filter = "blur(0px)";
+        element.style.zIndex = "0";
       });
       picture.className = picture.className.replace(" scale", "");
+      picture.style.zIndex = "10";
+      discr.style.zIndex = "10";
       discr.style.display = "none";
+      window.setTimeout(() => (picture.style.zIndex = "0"), 500);
     }
   };
 
@@ -104,6 +109,32 @@ const showPage = (array, page, container, titleMain) => {
     title.textContent = titleMain;
     containerProd.appendChild(title);
 
+    if (page === "produits") {
+      const filter = document.createElement("div");
+      filter.className = "filter";
+      filter.textContent = "Filtre";
+      const buttFilter = document.createElement("button");
+      buttFilter.className = "button-filter";
+      const containerDropdawn = document.createElement("div");
+      containerDropdawn.id = "myDropdown";
+      containerDropdawn.className = "dropdown - content";
+      const item1 = document.createElement("a");
+      item1.href = "#confort";
+      item1.textContent = "Comfort";
+      const item2 = document.createElement("a");
+      item2.href = "#surface";
+      item2.textContent = "Surface";
+      const item3 = document.createElement("a");
+      item3.href = "#decoration";
+      item3.textContent = "Décoration";
+      filter.appendChild(buttFilter);
+      filter.appendChild(containerDropdawn);
+      containerDropdawn.appendChild(item1);
+      containerDropdawn.appendChild(item2);
+      containerDropdawn.appendChild(item3);
+      containerProd.appendChild(filter);
+    }
+
     pageArrayWithoutFirst.map((element) => {
       const cell = document.createElement("div");
       cell.className = "cell";
@@ -116,41 +147,45 @@ const showPage = (array, page, container, titleMain) => {
       cellDiscription.className = "discription";
       const texteDiscr = element.discription.split("\n");
 
-      const titleDiscr = document.createElement("h5");
-      titleDiscr.textContent = texteDiscr[0];
-      titleDiscr.style.fontSize = "1rem";
-      titleDiscr.style.fontWeight = "900";
-      cellDiscription.appendChild(titleDiscr);
+      if (element.page === "produits") {
+        const titleDiscr = document.createElement("h5");
+        titleDiscr.textContent = texteDiscr[0];
+        titleDiscr.style.fontSize = "1rem";
+        titleDiscr.style.fontWeight = "900";
+        cellDiscription.appendChild(titleDiscr);
 
-      texteDiscr.map((item, index) => {
-        if (index > 0) {
-          const el = document.createElement("h6");
-          el.textContent = item;
-          el.style.fontSize = "0.5rem";
-          el.style.fontWeight = "400";
-          cellDiscription.appendChild(el);
-        }
-      });
-      const br = document.createElement("br");
-      cellDiscription.appendChild(br);
-      const br1 = document.createElement("br");
-      cellDiscription.appendChild(br1);
+        texteDiscr.map((item, index) => {
+          if (index > 0) {
+            const el = document.createElement("h6");
+            el.textContent = item;
+            el.style.fontSize = "0.5rem";
+            el.style.fontWeight = "400";
+            el.style.lineHeight = 0.5;
+            cellDiscription.appendChild(el);
+          }
+        });
+        const br = document.createElement("br");
+        cellDiscription.appendChild(br);
+        const br1 = document.createElement("br");
+        cellDiscription.appendChild(br1);
 
-      const prix = document.createElement("h5");
-      prix.textContent = element.price + "€";
-      cellDiscription.appendChild(prix);
+        const prix = document.createElement("h5");
+        prix.textContent = element.price + "€";
+        cellDiscription.appendChild(prix);
 
-      const butt = document.createElement("button");
-      butt.className = "butt-panier";
-      butt.style.width = "5rem";
-      butt.style.height = "2rem";
-      butt.style.marginLeft = "3.5rem";
-      butt.textContent = "AJOUTER";
+        const butt = document.createElement("button");
+        butt.className = "butt-panier";
+        butt.style.width = "8rem";
+        butt.style.height = "2rem";
+        butt.style.marginLeft = "1.3rem";
+        butt.textContent = "AJOUTER";
+        const icon = document.createElement("i");
+        icon.className = "fa-solid fa-cart-shopping";
+        butt.appendChild(icon);
 
-      // butt.addEventListener("click", () => console.log("Hi"));
-      cellDiscription.appendChild(butt);
-
-      cellDiscription.style.display = "none";
+        cellDiscription.appendChild(butt);
+        cellDiscription.style.display = "none";
+      }
 
       let cellTexte = document.createElement("h4");
       cellTexte.textContent = element.name;
@@ -167,7 +202,15 @@ const showPage = (array, page, container, titleMain) => {
 
     pageArrayWithoutFirst.map((element) => {
       const myImage = document.querySelector(".img" + element.id);
-      myImage.addEventListener("click", () => openImage(element.id));
+      myImage.addEventListener("click", (e) => openImage(element.id));
+    });
+
+    const myButtons = document.querySelectorAll(".butt-panier");
+    myButtons.forEach((element) => {
+      element.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("Внутреннее событие click");
+      });
     });
   }
 };

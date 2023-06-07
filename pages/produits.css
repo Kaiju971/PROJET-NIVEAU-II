@@ -16,7 +16,7 @@ body {
 .container-prod {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 10% 45% 45%;
+  grid-template-rows: 10% 10% 45% 45%;
   place-self: center stretch;
   height: calc(100vh - 20px);
 }
@@ -33,6 +33,7 @@ body {
   display: flex;
   flex-flow: row;
   justify-content: center;
+  width: 90%;
 }
 
 .container-prod .cell .cell-img img {
@@ -44,15 +45,28 @@ body {
 .container-prod .cell .cell-img .discription {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   width: 30%;
+  justify-items: center;
 }
 
 .container-prod h1 {
   grid-column: 1 / span 3;
   place-self: center stretch;
   padding-top: 4rem;
+  padding-bottom: 4rem;
   text-align: center;
+}
+
+.container-prod .filter {
+  grid-column: 1 / span 3;
+  margin-top: 4rem;
+  text-align: center;
+  margin: 0 auto;
+  width: 15rem;
+  height: 2rem;
+  background-color: var(--primary-color);
+  border-radius: 10%;
 }
 
 .container-prod h4 {
