@@ -1,3 +1,5 @@
+const typesDecor = ["confort", "surface", "decoration"];
+
 var requestURL = "../src/database.json";
 var request = new XMLHttpRequest();
 request.open("GET", requestURL);
@@ -7,10 +9,6 @@ request.onload = () => {
   const products = request.response;
   showInspirations(products, "inspiration");
   showProduits(products, "produits");
-};
-
-const panier = () => {
-  console.log("hello, world");
 };
 
 const showPage = (array, page, container, titleMain) => {
@@ -24,9 +22,7 @@ const showPage = (array, page, container, titleMain) => {
     const idPict = ".img" + imageId;
 
     const picture = document.querySelector(idPict); //cell-img
-    console.log(picture);
     const discr = picture.querySelector(".discription");
-    console.log(discr);
     const pictures = document.querySelectorAll("img");
     const pictArray = Array.from(pictures);
 
@@ -112,26 +108,23 @@ const showPage = (array, page, container, titleMain) => {
     if (page === "produits") {
       const filter = document.createElement("div");
       filter.className = "filter";
-      filter.textContent = "Filtre";
       const buttFilter = document.createElement("button");
       buttFilter.className = "button-filter";
+      buttFilter.textContent = "Filtre";
       const containerDropdawn = document.createElement("div");
       containerDropdawn.id = "myDropdown";
-      containerDropdawn.className = "dropdown - content";
-      const item1 = document.createElement("a");
-      item1.href = "#confort";
-      item1.textContent = "Comfort";
-      const item2 = document.createElement("a");
-      item2.href = "#surface";
-      item2.textContent = "Surface";
-      const item3 = document.createElement("a");
-      item3.href = "#decoration";
-      item3.textContent = "Décoration";
+      containerDropdawn.className = "dropdown-content";
       filter.appendChild(buttFilter);
       filter.appendChild(containerDropdawn);
-      containerDropdawn.appendChild(item1);
-      containerDropdawn.appendChild(item2);
-      containerDropdawn.appendChild(item3);
+
+      typesDecor.map((elem, index) => {
+        const item = document.createElement("a");
+        item.href = "#" + elem;
+        item.textContent = elem;
+        item.className = "item" + index;
+        containerDropdawn.appendChild(item);
+      });
+
       containerProd.appendChild(filter);
     }
 
@@ -205,14 +198,45 @@ const showPage = (array, page, container, titleMain) => {
       myImage.addEventListener("click", (e) => openImage(element.id));
     });
 
-    const myButtons = document.querySelectorAll(".butt-panier");
-    myButtons.forEach((element) => {
-      element.addEventListener("click", (e) => {
-        e.stopPropagation();
-        console.log("Внутреннее событие click");
+    if (page === "produits") {
+      const myButtons = document.querySelectorAll(".butt-panier");
+      myButtons.forEach((element) => {
+        element.addEventListener("click", (e) => {
+          e.stopPropagation();
+          console.log("Bascet");
+        });
       });
-    });
+
+      const buttFilter = document.querySelector(".button-filter");
+      buttFilter.addEventListener("click", (e) => {
+        const contDropdawn = document.querySelector(".dropdown-content");
+        contDropdawn.classList.toggle("show");
+      });
+
+      typesDecor.map((elem, index) => {
+        const buttDrop = document.querySelector(".item" + index);
+        buttDrop.addEventListener("click", (e) =>
+          filtration(elem, pageArrayWithoutFirst)
+        );
+      });
+    }
   }
+};
+
+const showDropdown = () => {
+  document.getElementById("myDropdown").classList.toggle("show");
+};
+
+const filtration = (item, array) => {
+  // const arrayHide = array?.filter((el) => el.type !== item);
+  array.map((el, index) => {
+    if (el.type !== item) {
+      elHTML = document.querySelector("cell-img" + el.id);
+      elHTML.className.toggle("hideFilter");
+    }
+  });
+
+  //console.log(arrayShow);
 };
 
 //page inspiration
