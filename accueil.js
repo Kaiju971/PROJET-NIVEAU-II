@@ -20,5 +20,41 @@ function move() {
     marquee.style.transform = 'translateX(' + currentTX + 'px)';
   }
 }
-
 var interval = setInterval(move, 5);
+
+
+
+        // // Create a button element
+        // const button = document.createElement('button');
+
+        // // // Set the button text to 'Can you click me?'
+        // button.innerText = 'Voir plus';
+
+        // button.id = 'Button';
+
+        // // Attach the "click" event to your button
+        // button.addEventListener('click', () => {
+        //   // When there is a "click"
+        //   // it shows an alert in the browser
+        //   alert('Oh, you clicked me!');
+        // })
+
+        //   // document.body.appendChild(button);
+
+          const button1 = document.createElement('button');
+          button1.innerText = 'Voir plus';
+          button1.id = 'Button';
+
+          const col1=document.querySelector(".col11");
+          col1.appendChild(button1);
+       
+         button1.addEventListener('click', () => location = '../pages/inspirations.html');
+
+        const button2 = document.createElement('button');
+        button2.innerText = 'Voir plus';
+        button2.id = 'Button';
+
+        const col2=document.querySelector(".col22");
+        col2.appendChild(button2);
+     
+       button2.addEventListener('click', () => location = '../pages/services.html');

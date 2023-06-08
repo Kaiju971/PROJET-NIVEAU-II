@@ -32,7 +32,6 @@ h1{
     background-color: #EEEEEE;
     color:var(--font-color-noir);
     font-family:var(--font-primary);
-    
     font-size: 1.2vw;
     background-color: var(--primary-color);
     text-align: center;
@@ -124,4 +123,14 @@ h1{
   
   .marquee {
     white-space: nowrap;
+  }
+
+  .container-title button{
+    background-color: var(--font-color-grey);
+    width: 20%;
+    height: 15%;
+    border: none;
+    border-radius: 30px;
+    color: var(--secondary-color);
+    
   }
