@@ -11,8 +11,12 @@
   --font-color-blanche: white; /*color: var(--font-color-blanche)*/
   --font-color-kaki: #A5A58D; /*color: var(--font-color-kaki)*/  
   --font-color-kaki2: #6B705C; /*color: var(--font-color-kaki2)*/
-  --font-primary: "Inter", sans-serif; /* font-family:var(--font-primary)*/
+  
   --font-color-grey: rgba(30, 30, 30, 0.82); /* color: var(--font-color-grey)*/
+
+
+
+  --font-primary: "Inter", sans-serif; /* font-family:var(--font-primary)*/
 }
 
 .topnav {
