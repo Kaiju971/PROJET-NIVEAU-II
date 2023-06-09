@@ -13,6 +13,7 @@ function getBasket() {
 }
 
 const addBasket = (product) => {
+  console.log(product);
   alert("le produit  " + product.name + " ajouté au panier");
   let basket = getBasket();
 
@@ -28,8 +29,6 @@ const addBasket = (product) => {
   }
   saveBasket(basket);
 };
-
-export default addBasket;
 
 function removeFromBasket(product) {
   let basket = getBasket();
@@ -68,18 +67,17 @@ function getTotalPrice() {
 }
 
 //shoppingcart
-const containerShoppingcart = document.getElementById("datacart");
+const containerShoppingcart = document.querySelector("#datacart");
 const shopCart = getBasket();
-let cell1 = ``;
-shopCart.forEach((element) => {
-  cell1 =
-    cell1 +
-    `
-
-        <div class="cell">${element.name}</div>
-        <div class="cell">${element.quantity}in </div>
-        <div class="cell">${element.price}€ </div>
-
-        `;
-});
-containerShoppingcart.innerHTML = cell1;
+// let cell1 = ``;
+// shopCart.forEach((element) => {
+//   //   cell1 =
+//   //     cell1 +
+//   //     `
+//   //         <div class="cell">${element.name}</div>
+//   //         <div class="cell">${element.quantity}in </div>
+//   //         <div class="cell">${element.price}€ </div>
+//   //         `;
+// });
+// containerShoppingcart.innerHTML = cell1;
+export default addBasket;
