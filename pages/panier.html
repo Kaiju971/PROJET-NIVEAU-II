@@ -21,17 +21,27 @@
     ></script>
     <link type="text/css" rel="stylesheet" href=".css" />
 
-    <link rel="stylesheet" href="./contacts.css" />
+    <link rel="stylesheet" href="./panier.css" />
     <link rel="stylesheet" href="../root.css" />
     <script src="../index.js"></script>
   </head>
   <body>
     <div w3-include-html="../includes/header.html"></div>
-
     <h1>Panier</h1>
+    <div class="continue">
+      <a href="./produits.html#anhor">Continue vos achats >></a>
+    </div>
+    <div class="container-shoppingcard">
+      <div class="cell">Produit</div>
+      <div class="cell">Quantité</div>
+      <div class="cell">Prix</div>
+    </div>
+    <div class="data" id="datacart"></div>
+
     <div w3-include-html="../includes/footer.html"></div>
   </body>
   <script>
     includeHTML();
   </script>
+  <script src="./panier.js"></script>
 </html>

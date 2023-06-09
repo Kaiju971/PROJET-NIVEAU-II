@@ -2,20 +2,18 @@
   --primary-color: #8b9781; /*var(--primary-color)*/
   --secondary-color: #d9d9d9; /*var(--secondary-color)*/
   --third-color: #0b3e27; /*var(--third-color)*/
-  --color-maroon: rgba(199, 129, 92, 1);/*var(--color-maroon)*/
-  --color-maroon-foncé: rgba(167, 111, 81, 1);/*var(--color-maroon-foncé)*/
-  --color-maroon1: #B4724FF0;/*var(--color-maroon)*/
-  --color-vert-clair1:  #B7B7A4;/*var(--color-vert-clair1)*/
+  --color-maroon: rgba(199, 129, 92, 1); /*var(--color-maroon)*/
+  --color-maroon-foncé: rgba(167, 111, 81, 1); /*var(--color-maroon-foncé)*/
+  --color-maroon1: #b4724ff0; /*var(--color-maroon)*/
+  --color-vert-clair1: #b7b7a4; /*var(--color-vert-clair1)*/
   --font-color-noir: black; /*color: var(--font-color-noir)*/
   --font-color-orange: #ffa500; /*color: var(--font-color-orange)*/
   --font-color-rouge: #ff0000; /*color: var(--font-color-rouge)*/
   --font-color-blanche: white; /*color: var(--font-color-blanche)*/
-  --font-color-kaki: #A5A58D; /*color: var(--font-color-kaki)*/  
-  --font-color-kaki2: #6B705C; /*color: var(--font-color-kaki2)*/
-  
+  --font-color-kaki: #a5a58d; /*color: var(--font-color-kaki)*/
+  --font-color-kaki2: #6b705c; /*color: var(--font-color-kaki2)*/
+
   --font-color-grey: rgba(30, 30, 30, 0.82); /* color: var(--font-color-grey)*/
-
-
 
   --font-primary: "Inter", sans-serif; /* font-family:var(--font-primary)*/
 }
@@ -31,7 +29,7 @@
   float: left;
   width: 100%;
 }
- 
+
 .topnav .brand {
   text-align: center;
   color: var(--font-color-noir);
@@ -124,10 +122,9 @@ footer {
   justify-content: space-between;
   align-items: center;
   flex: 0 0 auto;
-  
 }
 
-footer .brand a{
+footer .brand a {
   font-size: 3rem;
   color: var(--font-color-blanche);
   text-align: center;
@@ -171,26 +168,23 @@ footer .contacts {
   .responsive {
     width: 0;
   }
-  footer{
-  height: 10rem;
-   display: grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: 1% 49% 49%
+  footer {
+    height: 10rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1% 49% 49%;
+  }
 
-}
+  footer .brand {
+    text-align: center;
+  }
+  footer .brand a {
+    font-size: 2rem;
+    text-align: center;
+    padding-left: 0rem;
+  }
 
-footer .brand {
-  text-align: center;
+  footer .contacts {
+    text-align: center;
+  }
 }
-footer .brand a{
-  font-size: 2rem;
-  text-align: center;
-  padding-left: 0rem;
-}
-
-footer .contacts {
-  text-align: center;
-}
-}
-
-  

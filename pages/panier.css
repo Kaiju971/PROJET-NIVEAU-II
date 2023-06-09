@@ -1,5 +1,60 @@
 h1 {
-  padding-top: 50px;
-  font-size: 48px;
+  padding-top: 20vh;
+
+  font-family: var(--font-primary);
   text-align: center;
+}
+
+.continue {
+  text-align: center;
+  padding-bottom: 5vh;
+  width: 100%;
+}
+
+.continue a {
+  color: var(--font-color-noir);
+}
+
+.container-shoppingcard {
+  padding-left: 15vh;
+  padding-right: 15vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.container-shoppingcard .cell {
+  border: solid black;
+  text-align: center;
+  background-color: gold;
+}
+
+.data {
+  padding-bottom: 15vh;
+  padding-left: 15vh;
+  padding-right: 15vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.data .cell {
+  border: solid black;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .data .cell {
+    font-size: 8px;
+  }
+  .container-shoppingcard .cell {
+    font-size: 10px;
+  }
+  .payment {
+    font-size: 9px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
 }
