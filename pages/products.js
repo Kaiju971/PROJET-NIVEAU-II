@@ -142,20 +142,18 @@ const showPage = (array, page, container, titleMain) => {
 
       if (element.page === "produits") {
         const titleDiscr = document.createElement("h5");
-        titleDiscr.textContent = texteDiscr[0];
+        titleDiscr.textContent = element.name;
         titleDiscr.style.fontSize = "1rem";
         titleDiscr.style.fontWeight = "900";
         cellDiscription.appendChild(titleDiscr);
 
         texteDiscr.map((item, index) => {
-          if (index > 0) {
-            const el = document.createElement("h6");
-            el.textContent = item;
-            el.style.fontSize = "0.5rem";
-            el.style.fontWeight = "400";
-            el.style.lineHeight = 0.5;
-            cellDiscription.appendChild(el);
-          }
+          const el = document.createElement("h6");
+          el.textContent = item;
+          el.style.fontSize = "0.5rem";
+          el.style.fontWeight = "400";
+          el.style.lineHeight = 0.5;
+          cellDiscription.appendChild(el);
         });
         const br = document.createElement("br");
         cellDiscription.appendChild(br);
