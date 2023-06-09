@@ -215,9 +215,9 @@ const showPage = (array, page, container, titleMain) => {
 
       typesDecor.map((elem, index) => {
         const buttDrop = document.querySelector(".item" + index);
-        buttDrop.addEventListener("click", (e) =>
-          filtration(elem, pageArrayWithoutFirst)
-        );
+        buttDrop.addEventListener("click", (e) => {
+          // filtration(elem, pageArrayWithoutFirst)
+        });
       });
     }
   }
@@ -231,7 +231,7 @@ const filtration = (item, array) => {
   // const arrayHide = array?.filter((el) => el.type !== item);
   array.map((el, index) => {
     if (el.type !== item) {
-      elHTML = document.querySelector("cell-img" + el.id);
+      elHTML = document.querySelector("cell-img " + el.id);
       elHTML.className.toggle("hideFilter");
     }
   });
