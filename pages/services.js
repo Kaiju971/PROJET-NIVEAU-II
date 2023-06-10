@@ -99,17 +99,22 @@ const switchTab=(tab)=>{
   if(tab==="text1"){
     text1.style.display = "block";
     text2.style.display = "none";
-    title1.style.backgroundColor = "red";
+    title2.style.backgroundColor = "var(--color-maroon)";
+    title1.style.backgroundColor = "var(--color-maroon-foncé)";
     img1.style.display = "block";
     img2.style.display = "none";
+    
+    
   }
   else{
     text1.style.display = "none";
     text2.style.display = "block";
     title1.style.backgroundColor = "var(--color-maroon)";
+    title2.style.backgroundColor = "var(--color-maroon-foncé)";
     img2.style.display = "block";
     img1.style.display = "none";
-
+    
+Ò
   }
 }
 

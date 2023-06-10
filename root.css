@@ -3,6 +3,7 @@
   --secondary-color: #d9d9d9; /*var(--secondary-color)*/
   --third-color: #0b3e27; /*var(--third-color)*/
   --color-maroon: rgba(199, 129, 92, 1);/*var(--color-maroon)*/
+  --color-maroon-foncé: rgba(167, 111, 81, 1);/*var(--color-maroon-foncé)*/
   --color-maroon1: #B4724FF0;/*var(--color-maroon)*/
   --color-vert-clair1:  #B7B7A4;/*var(--color-vert-clair1)*/
   --font-color-noir: black; /*color: var(--font-color-noir)*/
