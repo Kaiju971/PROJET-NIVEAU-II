@@ -127,11 +127,12 @@ footer {
   
 }
 
-footer .brand {
+footer .brand a{
   font-size: 3rem;
   color: var(--font-color-blanche);
   text-align: center;
   padding-left: 6.1rem;
+  text-decoration: none;
 }
 
 footer .contacts {
@@ -171,7 +172,6 @@ footer .contacts {
     width: 0;
   }
 }
-
 
 
   
