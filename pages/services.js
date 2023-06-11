@@ -75,7 +75,7 @@ resume = () =>{
 }
 
 
-function CheckBoxShortList(x,y,z) {
+const CheckBoxShortList=(x,y,z) =>{
   //  var slide = '';
    var arr = [];
    arr.push(x + ',' + y + ',' + z); // length is 1
@@ -84,6 +84,39 @@ function CheckBoxShortList(x,y,z) {
   
 }
 
+const title1 = document.querySelector(".container-title1");
+title1.addEventListener("click",()=>switchTab("text1"));
+const title2 = document.querySelector(".container-title2");
+title2.addEventListener("click",()=>switchTab("text2"));
+const text1 = document.querySelector(".text1");
+const text2 = document.querySelector(".text2");
+const img1 = document.querySelector(".img1");
+console.log(img1);
+const img2 = document.querySelector(".img2");
+console.log(img2);
+
+const switchTab=(tab)=>{
+  if(tab==="text1"){
+    text1.style.display = "block";
+    text2.style.display = "none";
+    title2.style.backgroundColor = "var(--color-maroon)";
+    title1.style.backgroundColor = "var(--color-maroon-foncé)";
+    img1.style.display = "block";
+    img2.style.display = "none";
+    
+    
+  }
+  else{
+    text1.style.display = "none";
+    text2.style.display = "block";
+    title1.style.backgroundColor = "var(--color-maroon)";
+    title2.style.backgroundColor = "var(--color-maroon-foncé)";
+    img2.style.display = "block";
+    img1.style.display = "none";
+    
+Ò
+  }
+}
 
 // function CheckBoxShortList('Nos modes de paiement') {
 //   var slide = '';
