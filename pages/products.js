@@ -1,3 +1,5 @@
+import * as basket from "./panier.js";
+
 const typesDecor = ["confort", "surface", "decoration"];
 
 var requestURL = "../src/database.json";
@@ -100,9 +102,10 @@ const showPage = (array, page, container, titleMain) => {
     container.appendChild(image);
 
     const containerProd = document.createElement("div");
-    containerProd.className = "container-prod";
+    containerProd.className = "container-prod ";
     const title = document.createElement("h1");
     title.textContent = titleMain;
+    title.id = "anhor";
     containerProd.appendChild(title);
 
     if (page === "produits") {
@@ -194,17 +197,17 @@ const showPage = (array, page, container, titleMain) => {
     pageArrayWithoutFirst.map((element) => {
       const myImage = document.querySelector(".img" + element.id);
       myImage.addEventListener("click", (e) => openImage(element.id));
+
+      if (page === "produits") {
+        const myButton = myImage.querySelector(".butt-panier");
+        myButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          basket.addBasket(element);
+        });
+      }
     });
 
     if (page === "produits") {
-      const myButtons = document.querySelectorAll(".butt-panier");
-      myButtons.forEach((element) => {
-        element.addEventListener("click", (e) => {
-          e.stopPropagation();
-          console.log("Bascet");
-        });
-      });
-
       const buttFilter = document.querySelector(".button-filter");
       buttFilter.addEventListener("click", (e) => {
         const contDropdawn = document.querySelector(".dropdown-content");
@@ -233,8 +236,6 @@ const filtration = (item, array) => {
       elHTML.className.toggle("hideFilter");
     }
   });
-
-  //console.log(arrayShow);
 };
 
 //page inspiration
@@ -249,101 +250,176 @@ const showProduits = (array, page) => {
   showPage(array, page, containerProduits, "Produits");
 };
 
-// //biju
-// const containerBiju = document.querySelector("#biju");
-// const biju = products.filter((product) => product.type === "biju");
-// if (containerBiju) GridCell(biju, containerBiju);
+//page panier
+const containerShoppingcart = document.querySelector("#datacart");
+const containerShoppingcartEmpty = document.querySelector("#vide");
 
-// //orniment
-// const containerOrniment = document.querySelector("#orniment");
-// const orniment = products.filter((product) => product.type === "orniment");
-// if (containerOrniment) GridCell(orniment, containerOrniment);
+const shopCart = basket.getBasket();
+if (shopCart.length) {
+  const priceForItem = (quantity, price) => quantity * price;
 
-// //semi
-// const containerSemi = document.querySelector("#semi");
-// const semi = products.filter((product) => product.type === "semi");
-// if (containerSemi) GridCell(semi, containerSemi);
+  const conttitlePanier = document.createElement("div");
+  conttitlePanier.className = "text-vide";
+  const titlePanier = document.createElement("h1");
+  titlePanier.className = "title-panier";
+  titlePanier.textContent = "Panier";
+  const subtitlePanier = document.createElement("div");
+  subtitlePanier.className = "continue";
+  subtitlePanier.textContent = "Continue vos achats >>";
 
-// /////basket////////
-// function saveBasket(basket) {
-//   localStorage.setItem("basket", JSON.stringify(basket));
-// }
+  conttitlePanier.appendChild(titlePanier);
+  conttitlePanier.appendChild(subtitlePanier);
+  containerShoppingcartEmpty.appendChild(conttitlePanier);
 
-// function getBasket() {
-//   let basket = localStorage.getItem("basket");
-//   if (basket == null) {
-//     return [];
-//   } else {
-//     return JSON.parse(basket);
-//   }
-// }
+  subtitlePanier.addEventListener("click", (e) => {
+    console.log("ici");
+    location.href = "./produits.html#anhor";
+  });
 
-// function addBasket(product) {
-//   alert("le produit  " + product.name + " ajouté au panier");
-//   let basket = getBasket();
+  shopCart.forEach((element) => {
+    const imag = document.createElement("img");
+    imag.src = element.image;
+    imag.style.width = "18rem";
+    imag.style.height = "14rem";
+    const nameDescr = document.createElement("div");
+    nameDescr.className = "nameDescr";
+    const name = document.createElement("div");
+    name.textContent = element.name;
+    name.className = "name";
+    const descr = document.createElement("div");
+    descr.textContent = element.discription.split("\n")[0];
+    const charQuant = document.createElement("div");
+    charQuant.className = "container-quantity";
+    const charDiv1 = document.createElement("div");
+    charDiv1.innerHTML = "&#9652;";
+    charDiv1.className = "char charDiv1" + element.id;
+    const quant = document.createElement("div");
+    quant.textContent = element.quantity;
+    quant.className = "quant" + element.id;
+    const charDiv2 = document.createElement("div");
+    charDiv2.innerHTML = "&#9662";
+    charDiv2.className = "char charDiv2" + element.id;
+    const price = document.createElement("div");
+    price.textContent = priceForItem(element.quantity, element.price);
+    price.className = "price" + element.id;
+    const euro = document.createElement("div");
+    euro.textContent = " € ";
+    euro.alignText = "left";
 
-//   let foundProduct = "";
-//   if (Object.keys(basket).length) {
-//     foundProduct = basket.find((p) => p.id == product.id);
-//   }
-//   if (foundProduct != undefined && foundProduct != "") {
-//     foundProduct.quantity++;
-//   } else {
-//     product.quantity = 1;
-//     basket.push(product);
-//   }
-//   saveBasket(basket);
-// }
+    nameDescr.appendChild(name);
+    nameDescr.appendChild(descr);
+    charQuant.appendChild(charDiv1);
+    charQuant.appendChild(quant);
+    charQuant.appendChild(charDiv2);
+    containerShoppingcart.appendChild(imag);
+    containerShoppingcart.appendChild(nameDescr);
+    containerShoppingcart.appendChild(charQuant);
+    containerShoppingcart.appendChild(price);
+    containerShoppingcart.appendChild(euro);
+  });
 
-// function removeFromBasket(product) {
-//   let basket = getBasket();
-//   basket = basket.filter((p) => p.id != product.id);
-//   saveBasket(basket);
-// }
+  const contTotal = document.createElement("div");
+  contTotal.className = "total";
+  let total = basket.getTotalPrice();
+  const text1 = document.createElement("div");
+  text1.textContent = " Total ";
+  const text2 = document.createElement("div");
+  text2.textContent = total + " € ";
 
-// function changeQuantity(product, quantity) {
-//   let basket = getBasket();
-//   let foundProduct = basket.find((p) => p.id != product.id);
-//   if (foundProduct != undefined) {
-//     foundProduct.quantity += quantity;
-//     if (foundProduct.quantity <= 0) {
-//       removeFromBasket(foundProduct);
-//     } else {
-//       saveBasket(basket);
-//     }
-//   }
-// }
+  const contButton = document.createElement("div");
+  contButton.className = "cont-button";
+  const buttTotal = document.createElement("div");
+  buttTotal.textContent = "Valider le panier";
+  buttTotal.className = "butt-total";
 
-// function getNumberProduct() {
-//   let basket = getBasket();
-//   let number = 0;
-//   for (let product of basket) {
-//     number += product.quantity;
-//   }
-//   return number;
-// }
-// function getTotalPrice() {
-//   let basket = getBasket();
-//   let total = 0;
-//   for (let product of basket) {
-//     total += product.quantity * product.price;
-//   }
-//   return total;
-// }
+  contTotal.appendChild(text1);
+  contTotal.appendChild(text2);
+  containerShoppingcart.appendChild(contTotal);
+  contButton.appendChild(buttTotal);
+  containerShoppingcart.appendChild(contButton);
 
-// //shoppingcart
-// const containerShoppingcart = document.getElementById("datacart");
-// const shopCart = getBasket();
-// let cell1 = ``;
-// shopCart.forEach((element) => {
-//   cell1 =
-//     cell1 +
-//     `
+  shopCart.forEach((element) => {
+    const foundProduct = shopCart.find((p) => p.id == element.id);
+    let quantityBasket = foundProduct?.quantity;
+    let quantity = 0;
+    const charDiv1 = document.querySelector(".charDiv1" + element.id);
+    const charDiv2 = document.querySelector(".charDiv2" + element.id);
+    const qualHTML = document.querySelector(".quant" + element.id);
+    const priceHTML = document.querySelector(".price" + element.id);
 
-//         <div class="cell">${element.name}</div>
-//         <div class="cell">${element.quantity}in </div>
-//         <div class="cell">${element.price}€ </div>
+    const Props = {
+      element: element,
+      quantity: quantity,
+      quantityBasket: quantityBasket,
+      elementPrice: element.price,
+      qualHTML: qualHTML,
+      priceHTML: priceHTML,
+    };
 
-//         `;
-// });
-// containerShoppingcart.innerHTML = cell1;
+    charDiv1.addEventListener("click", (e) => {
+      if (e.target === charDiv1) {
+        dataPanier(Props, 1);
+      }
+    });
+    charDiv2.addEventListener("click", (e) => {
+      if (e.target === charDiv2) {
+        dataPanier(Props, -1);
+      }
+    });
+  });
+
+  const dataPanier = (Props, plusOne) => {
+    Props.quantity += plusOne;
+    let quantityForItem = (Props.quantityBasket += plusOne);
+    Props.qualHTML.innerHTML = quantityForItem;
+    Props.priceHTML.innerHTML = priceForItem(
+      quantityForItem,
+      Props.elementPrice
+    );
+    basket.changeQuantity(Props.element, Props.quantity);
+    total = basket.getTotalPrice();
+    text2.textContent = total + " € ";
+  };
+
+  const buttTotal1 = document.querySelector(".butt-total");
+  buttTotal1.addEventListener("click", (e) => {
+    basket.emptyBasket();
+    location.reload();
+  });
+} else {
+  //panier vide
+
+  const conttitlePanier = document.createElement("div");
+  conttitlePanier.className = "text-vide";
+  const titlePanier = document.createElement("h1");
+  titlePanier.className = "title-panier";
+  titlePanier.textContent = "Votre panier est vide";
+  titlePanier.style.fontSize = "1.4rem";
+  const subtitlePanier = document.createElement("div");
+  subtitlePanier.className = "continue";
+  subtitlePanier.textContent = "Continue vos achats >>";
+
+  const imag = document.createElement("img");
+  imag.src = "../images/PanierVide.PNG";
+  imag.style.width = "12rem";
+  imag.style.height = "10rem";
+  imag.style.marginRight = "3rem";
+
+  conttitlePanier.appendChild(titlePanier);
+  conttitlePanier.appendChild(subtitlePanier);
+  containerShoppingcartEmpty.appendChild(imag);
+  containerShoppingcartEmpty.appendChild(conttitlePanier);
+
+  subtitlePanier.addEventListener("click", (e) => {
+    imag.style.display = "none";
+    conttitlePanier.style.display = "none";
+    const spin = document.createElement("div");
+    spin.className = "loader";
+    containerShoppingcartEmpty.appendChild(spin);
+    setTimeout(redirect, 300);
+  });
+}
+
+const redirect = () => {
+  location.href = "../index.html";
+};
