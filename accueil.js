@@ -1,60 +1,67 @@
-var wrapper = document.querySelector('.marquee-wrapper'),
-    marquee = document.querySelector('.marquee'),   
-    wrapperWidth = wrapper.offsetWidth,
-    marqueeWidth = marquee.scrollWidth/2;
-    
+var wrapper = document.querySelector(".marquee-wrapper"),
+  marquee = document.querySelector(".marquee"),
+  wrapperWidth = wrapper.offsetWidth,
+  marqueeWidth = marquee.scrollWidth / 2;
 
-    
 function move() {
-  var currentTX = getComputedStyle(marquee).transform.split(',');
-  if( currentTX[4] === undefined ) {
+  var currentTX = getComputedStyle(marquee).transform.split(",");
+  if (currentTX[4] === undefined) {
     currentTX = -1;
   } else {
     currentTX = parseFloat(currentTX[4]) - 1;
   }
-  
-  if(-currentTX >= marqueeWidth) {
-    marquee.style.transform = 'translateX(' + wrapperWidth + 'px)';
-  
+
+  if (-currentTX >= marqueeWidth) {
+    marquee.style.transform = "translateX(" + wrapperWidth + "px)";
   } else {
-    marquee.style.transform = 'translateX(' + currentTX + 'px)';
+    marquee.style.transform = "translateX(" + currentTX + "px)";
   }
 }
 var interval = setInterval(move, 5);
 
+const button1 = document.createElement("button");
+button1.innerText = "Voir plus";
+button1.id = "Button";
 
+const col1 = document.querySelector(".col11");
+col1.appendChild(button1);
 
-        // // Create a button element
-        // const button = document.createElement('button');
+button1.addEventListener(
+  "click",
+  () => (location = "../pages/inspirations.html")
+);
 
-        // // // Set the button text to 'Can you click me?'
-        // button.innerText = 'Voir plus';
+const button2 = document.createElement("button");
+button2.innerText = "Voir plus";
+button2.id = "Button";
 
-        // button.id = 'Button';
+const col2 = document.querySelector(".col22");
+col2.appendChild(button2);
 
-        // // Attach the "click" event to your button
-        // button.addEventListener('click', () => {
-        //   // When there is a "click"
-        //   // it shows an alert in the browser
-        //   alert('Oh, you clicked me!');
-        // })
+button2.addEventListener("click", () => (location = "../pages/services.html"));
 
-        //   // document.body.appendChild(button);
+const showTexteBasket = () => {
+  const contTexte = document.querySelector(".container-texte");
+  contTexte.style.display = "flex";
+  contTexte.style.justifyContent = "space-between";
+  contTexte.style.backgroundColor = "var(--third-color)";
+  contTexte.style.height = "10rem";
+  contTexte.style.paddingLeft = "40rem";
+  const texte = document.createElement("div");
+  texte.textContent = "Votre Panier a été validé avec succés !";
+  texte.style.marginTop = "5rem";
+  texte.style.fontSize = "2rem";
+  texte.style.color = "var(--font-color-blanche)";
+  const charClose = document.createElement("div");
+  charClose.innerHTML = "&times;";
+  charClose.style.marginTop = "5rem";
+  charClose.style.fontSize = "2rem";
+  charClose.style.color = "var(--font-color-blanche)";
+  charClose.style.cursor = "pointer";
+  contTexte.appendChild(texte);
+  contTexte.appendChild(charClose);
+  charClose.addEventListener("click", () => (location = "./index.html"));
+};
 
-          const button1 = document.createElement('button');
-          button1.innerText = 'Voir plus';
-          button1.id = 'Button';
-
-          const col1=document.querySelector(".col11");
-          col1.appendChild(button1);
-       
-         button1.addEventListener('click', () => location = '../pages/inspirations.html');
-
-        const button2 = document.createElement('button');
-        button2.innerText = 'Voir plus';
-        button2.id = 'Button';
-
-        const col2=document.querySelector(".col22");
-        col2.appendChild(button2);
-     
-       button2.addEventListener('click', () => location = '../pages/services.html');
+if (document.referrer === "http://127.0.0.1:5500/pages/panier.html")
+  showTexteBasket();

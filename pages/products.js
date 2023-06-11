@@ -1,6 +1,6 @@
-const typesDecor = ["confort", "surface", "decoration"];
+import * as basket from "./panier.js";
 
-// import addBasket from "./panier.js";
+const typesDecor = ["confort", "surface", "decoration"];
 
 var requestURL = "../src/database.json";
 var request = new XMLHttpRequest();
@@ -197,17 +197,17 @@ const showPage = (array, page, container, titleMain) => {
     pageArrayWithoutFirst.map((element) => {
       const myImage = document.querySelector(".img" + element.id);
       myImage.addEventListener("click", (e) => openImage(element.id));
+
+      if (page === "produits") {
+        const myButton = myImage.querySelector(".butt-panier");
+        myButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          basket.addBasket(element);
+        });
+      }
     });
 
     if (page === "produits") {
-      const myButtons = document.querySelectorAll(".butt-panier");
-      myButtons.forEach((element) => {
-        element.addEventListener("click", (e) => {
-          e.stopPropagation();
-          console.log("Bascet");
-        });
-      });
-
       const buttFilter = document.querySelector(".button-filter");
       buttFilter.addEventListener("click", (e) => {
         const contDropdawn = document.querySelector(".dropdown-content");
@@ -236,8 +236,6 @@ const filtration = (item, array) => {
       elHTML.className.toggle("hideFilter");
     }
   });
-
-  //console.log(arrayShow);
 };
 
 //page inspiration
@@ -250,4 +248,178 @@ const showInspirations = (array, page) => {
 const showProduits = (array, page) => {
   const containerProduits = document.querySelector(".container-produits");
   showPage(array, page, containerProduits, "Produits");
+};
+
+//page panier
+const containerShoppingcart = document.querySelector("#datacart");
+const containerShoppingcartEmpty = document.querySelector("#vide");
+
+const shopCart = basket.getBasket();
+if (shopCart.length) {
+  const priceForItem = (quantity, price) => quantity * price;
+
+  const conttitlePanier = document.createElement("div");
+  conttitlePanier.className = "text-vide";
+  const titlePanier = document.createElement("h1");
+  titlePanier.className = "title-panier";
+  titlePanier.textContent = "Panier";
+  const subtitlePanier = document.createElement("div");
+  subtitlePanier.className = "continue";
+  subtitlePanier.textContent = "Continue vos achats >>";
+
+  conttitlePanier.appendChild(titlePanier);
+  conttitlePanier.appendChild(subtitlePanier);
+  containerShoppingcartEmpty.appendChild(conttitlePanier);
+
+  subtitlePanier.addEventListener("click", (e) => {
+    console.log("ici");
+    location.href = "./produits.html#anhor";
+  });
+
+  shopCart.forEach((element) => {
+    const imag = document.createElement("img");
+    imag.src = element.image;
+    imag.style.width = "18rem";
+    imag.style.height = "14rem";
+    const nameDescr = document.createElement("div");
+    nameDescr.className = "nameDescr";
+    const name = document.createElement("div");
+    name.textContent = element.name;
+    name.className = "name";
+    const descr = document.createElement("div");
+    descr.textContent = element.discription.split("\n")[0];
+    const charQuant = document.createElement("div");
+    charQuant.className = "container-quantity";
+    const charDiv1 = document.createElement("div");
+    charDiv1.innerHTML = "&#9652;";
+    charDiv1.className = "char charDiv1" + element.id;
+    const quant = document.createElement("div");
+    quant.textContent = element.quantity;
+    quant.className = "quant" + element.id;
+    const charDiv2 = document.createElement("div");
+    charDiv2.innerHTML = "&#9662";
+    charDiv2.className = "char charDiv2" + element.id;
+    const price = document.createElement("div");
+    price.textContent = priceForItem(element.quantity, element.price);
+    price.className = "price" + element.id;
+    const euro = document.createElement("div");
+    euro.textContent = " € ";
+    euro.alignText = "left";
+
+    nameDescr.appendChild(name);
+    nameDescr.appendChild(descr);
+    charQuant.appendChild(charDiv1);
+    charQuant.appendChild(quant);
+    charQuant.appendChild(charDiv2);
+    containerShoppingcart.appendChild(imag);
+    containerShoppingcart.appendChild(nameDescr);
+    containerShoppingcart.appendChild(charQuant);
+    containerShoppingcart.appendChild(price);
+    containerShoppingcart.appendChild(euro);
+  });
+
+  const contTotal = document.createElement("div");
+  contTotal.className = "total";
+  let total = basket.getTotalPrice();
+  const text1 = document.createElement("div");
+  text1.textContent = " Total ";
+  const text2 = document.createElement("div");
+  text2.textContent = total + " € ";
+
+  const contButton = document.createElement("div");
+  contButton.className = "cont-button";
+  const buttTotal = document.createElement("div");
+  buttTotal.textContent = "Valider le panier";
+  buttTotal.className = "butt-total";
+
+  contTotal.appendChild(text1);
+  contTotal.appendChild(text2);
+  containerShoppingcart.appendChild(contTotal);
+  contButton.appendChild(buttTotal);
+  containerShoppingcart.appendChild(contButton);
+
+  shopCart.forEach((element) => {
+    const foundProduct = shopCart.find((p) => p.id == element.id);
+    let quantityBasket = foundProduct?.quantity;
+    let quantity = 0;
+    const charDiv1 = document.querySelector(".charDiv1" + element.id);
+    const charDiv2 = document.querySelector(".charDiv2" + element.id);
+    const qualHTML = document.querySelector(".quant" + element.id);
+    const priceHTML = document.querySelector(".price" + element.id);
+
+    const Props = {
+      element: element,
+      quantity: quantity,
+      quantityBasket: quantityBasket,
+      elementPrice: element.price,
+      qualHTML: qualHTML,
+      priceHTML: priceHTML,
+    };
+
+    charDiv1.addEventListener("click", (e) => {
+      if (e.target === charDiv1) {
+        dataPanier(Props, 1);
+      }
+    });
+    charDiv2.addEventListener("click", (e) => {
+      if (e.target === charDiv2) {
+        dataPanier(Props, -1);
+      }
+    });
+  });
+
+  const dataPanier = (Props, plusOne) => {
+    Props.quantity += plusOne;
+    let quantityForItem = (Props.quantityBasket += plusOne);
+    Props.qualHTML.innerHTML = quantityForItem;
+    Props.priceHTML.innerHTML = priceForItem(
+      quantityForItem,
+      Props.elementPrice
+    );
+    basket.changeQuantity(Props.element, Props.quantity);
+    total = basket.getTotalPrice();
+    text2.textContent = total + " € ";
+  };
+
+  const buttTotal1 = document.querySelector(".butt-total");
+  buttTotal1.addEventListener("click", (e) => {
+    basket.emptyBasket();
+    location.reload();
+  });
+} else {
+  //panier vide
+
+  const conttitlePanier = document.createElement("div");
+  conttitlePanier.className = "text-vide";
+  const titlePanier = document.createElement("h1");
+  titlePanier.className = "title-panier";
+  titlePanier.textContent = "Votre panier est vide";
+  titlePanier.style.fontSize = "1.4rem";
+  const subtitlePanier = document.createElement("div");
+  subtitlePanier.className = "continue";
+  subtitlePanier.textContent = "Continue vos achats >>";
+
+  const imag = document.createElement("img");
+  imag.src = "../images/PanierVide.PNG";
+  imag.style.width = "12rem";
+  imag.style.height = "10rem";
+  imag.style.marginRight = "3rem";
+
+  conttitlePanier.appendChild(titlePanier);
+  conttitlePanier.appendChild(subtitlePanier);
+  containerShoppingcartEmpty.appendChild(imag);
+  containerShoppingcartEmpty.appendChild(conttitlePanier);
+
+  subtitlePanier.addEventListener("click", (e) => {
+    imag.style.display = "none";
+    conttitlePanier.style.display = "none";
+    const spin = document.createElement("div");
+    spin.className = "loader";
+    containerShoppingcartEmpty.appendChild(spin);
+    setTimeout(redirect, 300);
+  });
+}
+
+const redirect = () => {
+  location.href = "../index.html";
 };

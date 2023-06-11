@@ -1,20 +1,19 @@
 /////basket////////
+
 function saveBasket(basket) {
   localStorage.setItem("basket", JSON.stringify(basket));
 }
 
-function getBasket() {
+export const getBasket = () => {
   let basket = localStorage.getItem("basket");
   if (basket == null) {
     return [];
   } else {
     return JSON.parse(basket);
   }
-}
+};
 
-const addBasket = (product) => {
-  console.log(product);
-  alert("le produit  " + product.name + " ajouté au panier");
+export const addBasket = (product) => {
   let basket = getBasket();
 
   let foundProduct = "";
@@ -30,54 +29,44 @@ const addBasket = (product) => {
   saveBasket(basket);
 };
 
-function removeFromBasket(product) {
+const removeFromBasket = (product) => {
   let basket = getBasket();
   basket = basket.filter((p) => p.id != product.id);
   saveBasket(basket);
-}
+};
 
-function changeQuantity(product, quantity) {
+export const changeQuantity = (product, quantity) => {
   let basket = getBasket();
-  let foundProduct = basket.find((p) => p.id != product.id);
+  let foundProduct = basket.find((p) => p.id === product.id);
   if (foundProduct != undefined) {
     foundProduct.quantity += quantity;
+
     if (foundProduct.quantity <= 0) {
       removeFromBasket(foundProduct);
     } else {
       saveBasket(basket);
     }
   }
-}
+};
 
-function getNumberProduct() {
+const getNumberProduct = () => {
   let basket = getBasket();
   let number = 0;
   for (let product of basket) {
     number += product.quantity;
   }
   return number;
-}
-function getTotalPrice() {
+};
+
+export const getTotalPrice = () => {
   let basket = getBasket();
   let total = 0;
   for (let product of basket) {
     total += product.quantity * product.price;
   }
   return total;
-}
+};
 
-//shoppingcart
-const containerShoppingcart = document.querySelector("#datacart");
-const shopCart = getBasket();
-// let cell1 = ``;
-// shopCart.forEach((element) => {
-//   //   cell1 =
-//   //     cell1 +
-//   //     `
-//   //         <div class="cell">${element.name}</div>
-//   //         <div class="cell">${element.quantity}in </div>
-//   //         <div class="cell">${element.price}€ </div>
-//   //         `;
-// });
-// containerShoppingcart.innerHTML = cell1;
-export default addBasket;
+export const emptyBasket = () => {
+  localStorage.clear();
+};
