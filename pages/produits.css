@@ -18,7 +18,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 10% 10% 45% 45%;
   place-self: center stretch;
-  height: calc(100vh - 20px);
+  padding-bottom: 4rem;
 }
 
 .container-prod .cell {
@@ -33,13 +33,15 @@ body {
   display: flex;
   flex-flow: row;
   justify-content: center;
-  width: 90%;
+  width: 80%;
+  background-color: transparent;
+  margin-left: 3rem;
 }
 
 .container-prod .cell .cell-img img {
-  width: 25rem;
-  height: 14rem;
-  /* border-radius: 5%;*/
+  width: 23rem;
+  height: 13rem;
+  border-radius: 5%;
 }
 
 .container-prod .cell .cell-img .discription {
@@ -53,8 +55,8 @@ body {
 .container-prod h1 {
   grid-column: 1 / span 3;
   place-self: center stretch;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   text-align: center;
 }
 
@@ -135,9 +137,7 @@ body {
 }
 
 @media (max-width: 560px) {
-
 }
 
 @media (max-width: 760px) {
-  
 }

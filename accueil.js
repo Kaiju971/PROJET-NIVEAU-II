@@ -37,7 +37,6 @@ button2.id = "Button";
 
 const col2 = document.querySelector(".col22");
 col2.appendChild(button2);
-
 button2.addEventListener("click", () => (location = "../pages/services.html"));
 
 const showTexteBasket = () => {
@@ -55,6 +54,7 @@ const showTexteBasket = () => {
   const charClose = document.createElement("div");
   charClose.innerHTML = "&times;";
   charClose.style.marginTop = "5rem";
+  charClose.style.paddingRight = "2rem";
   charClose.style.fontSize = "2rem";
   charClose.style.color = "var(--font-color-blanche)";
   charClose.style.cursor = "pointer";
