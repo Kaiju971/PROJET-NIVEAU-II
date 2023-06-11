@@ -98,8 +98,9 @@ const showPage = (array, page, container, titleMain) => {
 
   if (container) {
     const image = document.createElement("div");
+    image.className = "img-header";
     image.style.background = `url(${pageArray[0].image})`;
-    image.style.backgroundSize = `cover`;
+    image.style.backgroundSize = `100% 100%`;
     image.style.backgroundRepeat = `no-repeat`;
     container.appendChild(image);
 

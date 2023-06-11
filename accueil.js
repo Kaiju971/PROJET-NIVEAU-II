@@ -43,7 +43,7 @@ const showTexteBasket = () => {
   const contTexte = document.querySelector(".container-texte");
   contTexte.style.display = "flex";
   contTexte.style.justifyContent = "space-between";
-  contTexte.style.backgroundColor = "var(--third-color)";
+  contTexte.style.backgroundColor = "var(--font-color-kaki2)";
   contTexte.style.height = "10rem";
   contTexte.style.paddingLeft = "40rem";
   const texte = document.createElement("div");
