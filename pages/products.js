@@ -22,6 +22,7 @@ const showPage = (array, page, container, titleMain) => {
 
   const openImage = (imageId) => {
     const idPict = ".img" + imageId;
+    const idCellPict = ".cell-img.img" + imageId;
 
     const picture = document.querySelector(idPict); //cell-img
     const discr = picture.querySelector(".discription");
@@ -30,16 +31,29 @@ const showPage = (array, page, container, titleMain) => {
     const textArray = Array.from(cellTexte);
 
     let anim;
-    if (imageId.includes("first")) anim = "scale(2.5) translate(13vw,5vh)";
-    else if (imageId.includes("second")) anim = "scale(2.5) translate(0,5vh)";
-    else if (imageId.includes("third"))
-      anim = "scale(2.5) translate(-13vw,5vh)";
-    else if (imageId.includes("forth"))
-      anim = "scale(2.5) translate(13vw, -10vh)";
-    else if (imageId.includes("fifth")) anim = "scale(2.5) translate(0, -10vh)";
-    else if (imageId.includes("sixth"))
-      anim = "scale(2.5) translate(-13vw, -10vh)";
-
+    if (window.matchMedia("(min-width: 1100px)").matches) {
+      if (imageId.includes("first")) anim = "scale(2.5) translate(13vw,5vh)";
+      else if (imageId.includes("second")) anim = "scale(2.5) translate(0,5vh)";
+      else if (imageId.includes("third"))
+        anim = "scale(2.5) translate(-13vw,5vh)";
+      else if (imageId.includes("forth"))
+        anim = "scale(2.5) translate(13vw, -10vh)";
+      else if (imageId.includes("fifth"))
+        anim = "scale(2.5) translate(0, -10vh)";
+      else if (imageId.includes("sixth"))
+        anim = "scale(2.5) translate(-13vw, -10vh)";
+    } else {
+      if (imageId.includes("first")) anim = "scale(2.5) translate(10vw,5vh)";
+      else if (imageId.includes("second"))
+        anim = "scale(2.5) translate(-10vw,5vh)";
+      else if (imageId.includes("third")) anim = "scale(2.5) translate(10vw,0)";
+      else if (imageId.includes("forth"))
+        anim = "scale(2.5) translate(-10vw,0)";
+      else if (imageId.includes("fifth"))
+        anim = "scale(2.5) translate(10vw,-5vh)";
+      else if (imageId.includes("sixth"))
+        anim = "scale(2.5) translate(-10vw,-5vh)";
+    }
     if (!picture.className.includes("scale")) {
       picture.className = picture.className + " scale";
       picture.style.zIndex = "10";
@@ -53,8 +67,9 @@ const showPage = (array, page, container, titleMain) => {
 
       const pictures = document.querySelectorAll(".cell-img");
       const pictArray = Array.from(pictures);
+
       const pictures1 = pictArray?.filter(
-        (item, index) => index > 0 && !item.className.includes("scale")
+        (item, index) => !item.className.includes("scale")
       );
 
       pictures1.forEach((element) => {
@@ -76,11 +91,8 @@ const showPage = (array, page, container, titleMain) => {
 
       const pictures = document.querySelectorAll(".cell-img");
       const pictArray = Array.from(pictures);
-      const pictures1 = pictArray?.filter(
-        (item, index) => index > 0 && !item.className.includes("scale")
-      );
 
-      pictures1.forEach((element) => {
+      pictArray.forEach((element) => {
         element.style.filter = "blur(0px)";
         element.style.zIndex = "0";
       });
