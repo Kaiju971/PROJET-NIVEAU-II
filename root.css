@@ -12,6 +12,7 @@
   --font-color-blanche: white; /*color: var(--font-color-blanche)*/
   --font-color-kaki: #a5a58d; /*color: var(--font-color-kaki)*/
   --font-color-kaki2: #6b705c; /*color: var(--font-color-kaki2)*/
+  --font-color-marron-light: rgba(203, 153, 126, 1);/*color: var(--font-color-marron-light)*/
 
   --font-color-grey: rgba(30, 30, 30, 0.82); /* color: var(--font-color-grey)*/
 
@@ -29,6 +30,18 @@
   float: left;
   width: 100%;
   z-index: 100;
+}
+
+.topnav-maroon {
+  background-color: var(--font-color-marron-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  float: left;
+  width: 100%;
 }
 
 .topnav .brand {
@@ -55,6 +68,7 @@
   padding-top: 80px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   opacity: 0.7;
+  z-index: 11;
 }
 
 .open-sidenav {
@@ -69,7 +83,7 @@
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 30px;
   color: var(--font-color-blanche);
   display: block;
   transition: 0.3s;
@@ -110,7 +124,7 @@
 }
 
 .sidenav .social-links a {
-  padding: 1rem;
+  padding: 0.5rem;
   color: var(--font-color-blanche);
   font-size: 3rem;
 }

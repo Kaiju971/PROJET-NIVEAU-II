@@ -26,17 +26,17 @@
     <script src="../index.js"></script>
   </head>
   <body>
-    <div w3-include-html="../includes/header.html"></div>
-    <div class="header-image">
+    <div w3-include-html="../includes/header.html" class="topbar"></div>
+    <div class="header-image" id = "contact-page">
       <!-- <img src="../images/header_contact.jpg"  alt=""> -->
     </div>
 <div class="container-contact" >
   
     <h4>Nous Contacter</h4>
     
-      <form>
+      <form id="form">
         <h5>Une question ? un problème ? N’hésiter pas à nous envoyer un message </h5>
-          <label for="nom">nom:</label>
+          <label for="nom">Nom:</label>
           <input type="text" id="nom" name="nom" value="" class = "input"/>
           <br />
           <br />
@@ -52,12 +52,13 @@
             message:
           </div>
           <!-- <label for="message"></label> -->
-          <textarea name="message" id=""></textarea>
+          <textarea name="message" id="message"></textarea>
           <br />
           <br />
-          <button class="button">Envoyer mon message</button>
+          <button type="submit" class="button">Envoyer mon message</button>
+          <p id="output"></p>
       </form>
-    
+      
     <div class="flexx-container">
       <div >
         <h3 class="underline">Adresse:</h3>

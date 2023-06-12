@@ -10,14 +10,10 @@ html{
 } 
 
 .header-image {
-  /* display: block; */
-  /* object-fit: cover;
- 
-  width:100%; */
+
   background: url("../images/header_contact1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  /* width: 600px; */
   height: 600px;
 }
 
@@ -38,7 +34,7 @@ h1 {
 .flexx-container{
   display:flex;
   flex-direction: row;
-  padding-left: 2px;
+  padding-right: 4vw;
   justify-content: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -49,9 +45,8 @@ h1 {
 .flexx-container div h3{
   padding-top: 3rem;
   text-align: center;
+  font-size: 3vw;
 }
-
-
 
 .underline{
   text-decoration: underline;
@@ -102,3 +97,63 @@ p{
   margin-top: 0.2rem;
   flex: content;
 }
+
+
+@media (max-width: 1000px){
+  .header-image {
+    height: 20rem;
+    overflow-y: hidden;
+    margin-top: 0;
+    background-position: center;
+    background-image: cover;
+    
+  }
+  form label .label{
+    width: 100vw;
+    text-align: start;
+  }
+  form label .nom{
+    width: 100vw;
+    text-align: start;
+  }
+  form .label{
+    padding-left: 6vw;
+}
+  form textarea{
+    width: 50vw;
+    height: 6rem;
+    border-radius: 10px;
+  }
+
+  form{
+    margin-top: 1rem;
+    background-color: var(--color-maroon);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    
+   
+  }
+  form .input{
+    width: 50%;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .flexx-container{
+    display: flex;
+    flex-direction: row;
+   
+  }
+  
+  img{
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    height: 35vh;
+    margin-left: 13vw;
+  }
+  body{
+    background-color:var(--font-color-marron-light);
+  }
+}  

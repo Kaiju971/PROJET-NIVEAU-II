@@ -37,3 +37,4 @@ function openNav() {
     x.className = "sidenav close-sidenav";
   }
 }
+
