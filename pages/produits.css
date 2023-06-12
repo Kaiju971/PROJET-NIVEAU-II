@@ -41,15 +41,15 @@ body {
 .container-prod .cell .cell-img img {
   width: 23rem;
   height: 13rem;
-  border-radius: 5%;
 }
 
 .container-prod .cell .cell-img .discription {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 30%;
+  width: 14vw;
   justify-items: center;
+  font-size: 2vw;
 }
 
 .container-prod h1 {
@@ -58,6 +58,7 @@ body {
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-align: center;
+  font-size: 5vw;
 }
 
 .container-prod .filter {
@@ -92,6 +93,7 @@ body {
   position: absolute;
   min-width: 14rem;
   z-index: 12;
+  cursor: pointer;
 }
 
 .container-prod .dropdown-content a {
@@ -102,6 +104,10 @@ body {
   /* background-color: var(--font-color-blanche); */
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-prod .dropdown-content .item0 {
+  background-color: var(--font-color-kaki2);
 }
 
 .container-prod .filter a:hover {
@@ -115,6 +121,7 @@ body {
 .container-prod h4 {
   padding: 1rem;
   text-align: center;
+  font-size: 2vw;
 }
 
 .container-produits .container-prod .scale {
@@ -123,13 +130,20 @@ body {
   background-color: white;
 }
 
-.container-inspiration .container-prod .cell-img img {
+.container-produits .container-prod .cell-img img {
   border-radius: 0;
 }
 
 .container-prod .cell-img .discription .butt-panier {
   text-align: center;
   background-color: var(--primary-color);
+  font-size: 1vw;
+  margin-bottom: 2vh;
+  margin-left: 1.5vw;
+}
+
+.container-prod .cell-img .discription .butt-panier .icon {
+  font-size: 1vw;
 }
 
 .hideFilter {
@@ -140,4 +154,46 @@ body {
 }
 
 @media (max-width: 760px) {
+}
+@media (max-width: 1000px) {
+  .container-produits {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh 50%;
+  }
+
+  .container-prod {
+    padding-top: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% 30% 30% 30%;
+    place-self: center stretch;
+  }
+
+  .container-prod h1 {
+    grid-column: 1 / span 2;
+    padding-bottom: 5%;
+  }
+
+  .container-prod .filter {
+    grid-column: 1 / span 2;
+  }
+
+  .container-prod .cell .cell-img img {
+    width: 100%;
+  }
+
+  .container-prod .cell .cell-img .discription {
+    width: 25%;
+    text-align: center;
+  }
+
+  .container-prod .cell .cell-img {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-prod .cell-img .discription .butt-panier {
+    margin-bottom: 2vh;
+    margin-left: 0vw;
+  }
 }

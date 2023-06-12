@@ -30,7 +30,7 @@ body {
 
 .container-prod .cell img {
   width: 22rem;
-  height: 13rem;
+  height: 14rem;
   border-radius: 5%;
 }
 
@@ -39,11 +39,13 @@ body {
   place-self: center stretch;
   padding-top: 1rem;
   text-align: center;
+  font-size: 3vw;
 }
 
 .container-prod h4 {
   padding: 1rem;
   text-align: center;
+  font-size: 2vw;
 }
 
 .container-inspiration .container-prod .scale {
@@ -57,13 +59,14 @@ body {
 @media (max-width: 760px) {
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .container-inspiration {
     grid-template-columns: 1fr;
     grid-template-rows: 50vh 50%;
   }
 
   .container-prod {
+    padding-top: 5%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 10% 30% 30% 30%;
@@ -72,6 +75,7 @@ body {
 
   .container-prod h1 {
     grid-column: 1 / span 2;
+    padding-bottom: 5%;
   }
 
   .container-prod .cell img {
