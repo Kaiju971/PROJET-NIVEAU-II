@@ -113,15 +113,6 @@ const switchTab=(tab)=>{
     title2.style.backgroundColor = "var(--color-maroon-foncé)";
     img2.style.display = "block";
     img1.style.display = "none";
-    
-Ò
   }
 }
 
-// function CheckBoxShortList('Nos modes de paiement') {
-//   var slide = '';
-//   var arr = [];
-//   arr.push(x + ',' + y + ',' + z); // length is 1
-//   console.log(arr);
-//   console.log('Length:', arr.length);
-// }

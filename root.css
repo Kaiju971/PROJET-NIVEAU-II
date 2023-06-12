@@ -31,6 +31,18 @@
   width: 100%;
 }
 
+.topnav-maroon {
+  background-color: var(--font-color-marron-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  float: left;
+  width: 100%;
+}
+
 .topnav .brand {
   text-align: center;
   color: var(--font-color-noir);

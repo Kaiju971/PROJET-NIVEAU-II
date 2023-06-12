@@ -166,16 +166,19 @@ body {
   width: 100%;
   padding-top: 4rem;
   background-color: var(--color-maroon);
-  height: 26rem;
   z-index: 0;
 }
 
 .grid-container .card{
-width: 90%;
-padding-right: 4rem;
-display: flex;
-flex-direction: row;
-justify-content: space-between; 
+  width: 90%;
+  padding-right: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;  
+}
+
+.grid-container .card .images-card img{
+  padding-right: 2rem;
 }
 
 .grid-container .paypal{
@@ -186,6 +189,10 @@ justify-content: space-between;
   justify-content: space-between;
   }
 
+  .grid-container .images-paypal img{
+    padding-right: 6rem;
+    } 
+
 .grid-container .ellipse{
   width: 69%;
   padding-right: 4rem;
@@ -194,12 +201,20 @@ justify-content: space-between;
   justify-content: space-between;
   }
 
-  @media (min-width: 420px) and (max-width: 960px){
+  .grid-container .text1 strong{
+    font-weight: 200;
+  }
+
+  .grid-container  .br{
+    display: none;
+  }
+
+  @media (max-width: 1000px){
     .grid-container {
       grid-template-columns: 2fr 2fr;
      padding-left: 2rem;
      padding-right: 2rem;
-     padding-bottom: 4rem;
+     padding-bottom: 6rem;
      background-color: var(--font-color-marron-light);
     }
     h1 {
@@ -213,12 +228,30 @@ justify-content: space-between;
       grid-row: 1;
      justify-content: center;
     }
-    .grid-container .text1 a{
-      font-size:;
+    .grid-container .text1 {
+      text-align: center;    
+      grid-column: 1/ span 2;
+      grid-row: 2; 
     }
-    .grid-container .text2 a{
 
+    .grid-container .text1 span{
+    
+      text-align: center;
+      padding-left:0rem;
     }
+    .grid-container .text1 strong{
+      font-weight: 700;
+      font-size: x-large;
+    }
+
+    .grid-container .br{
+      display: inline;
+    }
+    
+    .grid-container .text2 {
+      text-align: center;
+    }
+   
     .grid-container .container-title2{
       font-size: 1.4rem;
       grid-column: 2;
@@ -242,4 +275,33 @@ justify-content: space-between;
     background-color: var(--font-color-marron-light) ;
   }
 
+  .grid-container .card{
+    width: 100%;
+    display: block;
+    
+  }
+  .grid-container .card .images-card{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .grid-container .paypal{
+    width: 100%;
+    display: block;
+    
+  }
+  .grid-container .card .images-paypal{
+    display: flex;
+    justify-content: center;
+  }
+
+  .grid-container .ellipse{
+    width: 100%;
+    display: block;
+    
+  }
+  .grid-container .card .images-ellipse{
+    display: flex;
+    justify-content: center;
+  }
 }
