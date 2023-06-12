@@ -28,6 +28,7 @@
   position: fixed;
   float: left;
   width: 100%;
+  z-index: 100;
 }
 
 .topnav .brand {
@@ -46,7 +47,7 @@
 .sidenav {
   height: 100%; /* 100% Full-height */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  z-index: 100; /* Stay on top */
   top: 0;
   left: 0;
   background-color: var(--primary-color);
@@ -122,6 +123,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   flex: 0 0 auto;
+  z-index: 100;
 }
 
 footer .brand a {

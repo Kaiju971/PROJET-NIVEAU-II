@@ -1,6 +1,6 @@
 import * as basket from "./panier.js";
 
-const typesDecor = ["confort", "surface", "decoration"];
+const typesDecor = ["tout", "confort", "surface", "decoration"];
 
 var requestURL = "../src/database.json";
 var request = new XMLHttpRequest();
@@ -43,16 +43,14 @@ const showPage = (array, page, container, titleMain) => {
       else if (imageId.includes("sixth"))
         anim = "scale(2.5) translate(-13vw, -10vh)";
     } else {
-      if (imageId.includes("first")) anim = "scale(2.5) translate(10vw,5vh)";
+      if (imageId.includes("first")) anim = "scale(3) translate(8vw,5vh)";
       else if (imageId.includes("second"))
-        anim = "scale(2.5) translate(-10vw,5vh)";
-      else if (imageId.includes("third")) anim = "scale(2.5) translate(10vw,0)";
-      else if (imageId.includes("forth"))
-        anim = "scale(2.5) translate(-10vw,0)";
-      else if (imageId.includes("fifth"))
-        anim = "scale(2.5) translate(10vw,-5vh)";
+        anim = "scale(3) translate(-8vw,5vh)";
+      else if (imageId.includes("third")) anim = "scale(3) translate(8vw,0)";
+      else if (imageId.includes("forth")) anim = "scale(3) translate(-8vw,0)";
+      else if (imageId.includes("fifth")) anim = "scale(3) translate(8vw,-5vh)";
       else if (imageId.includes("sixth"))
-        anim = "scale(2.5) translate(-10vw,-5vh)";
+        anim = "scale(3) translate(-8vw,-5vh)";
     }
     if (!picture.className.includes("scale")) {
       picture.className = picture.className + " scale";
@@ -137,7 +135,7 @@ const showPage = (array, page, container, titleMain) => {
 
       typesDecor.map((elem, index) => {
         const item = document.createElement("a");
-        item.href = "#" + elem;
+        item.id = elem;
         item.textContent = elem;
         item.className = "item" + index;
         containerDropdawn.appendChild(item);
@@ -151,6 +149,7 @@ const showPage = (array, page, container, titleMain) => {
       cell.className = "cell";
       const cellImg = document.createElement("div");
       cellImg.className = "cell-img img" + element.id;
+      cellImg.id = element.type;
       const imag = document.createElement("img");
       imag.src = element.image;
       imag.className = "imag" + element.id;
@@ -161,14 +160,14 @@ const showPage = (array, page, container, titleMain) => {
       if (element.page === "produits") {
         const titleDiscr = document.createElement("h5");
         titleDiscr.textContent = element.name;
-        titleDiscr.style.fontSize = "1rem";
+        titleDiscr.style.fontSize = "1.2vw";
         titleDiscr.style.fontWeight = "900";
         cellDiscription.appendChild(titleDiscr);
 
         texteDiscr.map((item, index) => {
           const el = document.createElement("h6");
           el.textContent = item;
-          el.style.fontSize = "0.5rem";
+          el.style.fontSize = "0.5vw";
           el.style.fontWeight = "400";
           el.style.lineHeight = 0.5;
           cellDiscription.appendChild(el);
@@ -184,12 +183,12 @@ const showPage = (array, page, container, titleMain) => {
 
         const butt = document.createElement("button");
         butt.className = "butt-panier";
-        butt.style.width = "8rem";
-        butt.style.height = "2rem";
-        butt.style.marginLeft = "1.3rem";
+        butt.style.width = "9vw";
+        butt.style.height = "2.1vw";
+
         butt.textContent = "AJOUTER";
         const icon = document.createElement("i");
-        icon.className = "fa-solid fa-cart-shopping";
+        icon.className = "fa-solid fa-cart-shopping icon";
         butt.appendChild(icon);
 
         cellDiscription.appendChild(butt);
@@ -232,25 +231,25 @@ const showPage = (array, page, container, titleMain) => {
       typesDecor.map((elem, index) => {
         const buttDrop = document.querySelector(".item" + index);
         buttDrop.addEventListener("click", (e) => {
-          // filtration(elem, pageArrayWithoutFirst)
+          const cellTexte = document.querySelectorAll("h4");
+          const textArray = Array.from(cellTexte);
+          const pictures = document.querySelectorAll(".cell-img");
+          const pictArray = Array.from(pictures);
+          pictArray.map((el) => (el.style.display = "inline"));
+          if (buttDrop.id === "tout") {
+            pictArray.map((el) => (el.style.display = "inline"));
+            textArray.forEach((el) => (el.style.display = "inline"));
+          } else {
+            const pictures1 = pictArray?.filter(
+              (item) => item.id !== buttDrop.id
+            );
+            pictures1.map((el) => (el.style.display = "none"));
+            textArray.forEach((el) => (el.style.display = "none"));
+          }
         });
       });
     }
   }
-};
-
-const showDropdown = () => {
-  document.getElementById("myDropdown").classList.toggle("show");
-};
-
-const filtration = (item, array) => {
-  // const arrayHide = array?.filter((el) => el.type !== item);
-  array.map((el, index) => {
-    if (el.type !== item) {
-      elHTML = document.querySelector("cell-img " + el.id);
-      elHTML.className.toggle("hideFilter");
-    }
-  });
 };
 
 //page inspiration
