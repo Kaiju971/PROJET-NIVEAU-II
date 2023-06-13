@@ -29,8 +29,8 @@ body {
 }
 
 .container-prod .cell img {
-  width: 22rem;
-  height: 14rem;
+  width: 22vw;
+  height: 28vh;
   border-radius: 5%;
 }
 
@@ -43,7 +43,7 @@ body {
   font-size: 4vw;
 }
 
-.container-prod h4 {
+.container-prod h3 {
   padding: 1rem;
   text-align: center;
   font-size: 2vw;
@@ -52,6 +52,13 @@ body {
 .container-inspiration .container-prod .scale {
   text-align: center;
   border-radius: 0;
+}
+
+.croix {
+  position: absolute;
+  top: 0;
+  left: 80%;
+  cursor: pointer;
 }
 
 @media (max-width: 560px) {
@@ -67,7 +74,7 @@ body {
   }
 
   .container-prod {
-    margin-top: 10vh;
+    margin-top: 5vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 10% 30% 30% 30%;
@@ -77,6 +84,8 @@ body {
   .container-prod h1 {
     grid-column: 1 / span 2;
     padding-bottom: 1%;
+    font-size: 5vw;
+    padding-bottom: 2vw;
   }
 
   .container-prod .cell {
@@ -85,5 +94,9 @@ body {
   .container-prod .cell img {
     width: 70%;
     height: 100%;
+  }
+
+  .container-prod h3 {
+    font-size: 4vw;
   }
 }

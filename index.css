@@ -11,10 +11,6 @@
   overflow-y: hidden;
 }
 
-.cont-image {
-  padding-top: 4rem;
-}
-
 h1 {
   padding-top: 150px;
 }
@@ -139,17 +135,12 @@ section {
     height: 50vh;
   }
 
-  .cont-image {
-    padding-top: 4rem;
-  }
-
   .image {
     background-image: url(./images/back-header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 8rem;
     overflow-y: hidden;
-    margin-top: 0;
   }
 
   .grid-container {
@@ -217,6 +208,5 @@ section {
     margin-top: -6vh;
     height: 28vh;
     overflow-y: hidden;
-    /* margin-top: 0; */
   }
 }
