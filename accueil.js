@@ -43,19 +43,17 @@ const showTexteBasket = () => {
   const contTexte = document.querySelector(".container-texte");
   contTexte.style.display = "flex";
   contTexte.style.justifyContent = "space-between";
+  contTexte.style.alignItems = "center";
   contTexte.style.backgroundColor = "var(--font-color-kaki2)";
   contTexte.style.height = "20vh";
   const flexEl = document.createElement("div");
-
   const texte = document.createElement("div");
   texte.textContent = "Votre Panier a été validé avec succés !";
-  texte.style.marginTop = "5rem";
-  texte.style.fontSize = "5vw";
+  texte.style.fontSize = "3.6vw";
   texte.style.color = "var(--font-color-blanche)";
   const charClose = document.createElement("div");
   charClose.innerHTML = "&times;";
-  charClose.style.marginTop = "5rem";
-  charClose.style.paddingRight = "2rem";
+  charClose.style.paddingRight = "2vw";
   charClose.style.fontSize = "2rem";
   charClose.style.color = "var(--font-color-blanche)";
   charClose.style.cursor = "pointer";
@@ -64,5 +62,13 @@ const showTexteBasket = () => {
   contTexte.appendChild(charClose);
   charClose.addEventListener("click", () => (location = "./index.html"));
 };
+const contImg = document.querySelector(".cont-image");
+if (document.referrer.includes("panier")) {
+  console.log(contImg);
+  contImg.style.paddingTop = "0vh";
 
-if (document.referrer.includes("panier")) showTexteBasket();
+  showTexteBasket();
+} else {
+  console.log(contImg);
+  contImg.style.paddingTop = "8vh";
+}

@@ -20,15 +20,16 @@ const showPage = (array, page, container, titleMain) => {
     (product, index) => index > 0
   );
 
-  const openImage = (imageId) => {
+  const openImage = (imageId, open) => {
     const idPict = ".img" + imageId;
-    const idCellPict = ".cell-img.img" + imageId;
 
     const picture = document.querySelector(idPict); //cell-img
     const discr = picture.querySelector(".discription");
 
     const cellTexte = document.querySelectorAll("h3");
     const textArray = Array.from(cellTexte);
+
+    const croix = document.querySelectorAll(".croix");
 
     let anim;
     if (window.matchMedia("(min-width: 1100px)").matches) {
@@ -52,8 +53,8 @@ const showPage = (array, page, container, titleMain) => {
       else if (imageId.includes("sixth"))
         anim = "scale(3) translate(-8vw,-5vh)";
     }
-    if (!picture.className.includes("scale")) {
-      picture.className = picture.className + " scale";
+
+    if (!picture.className.includes("scale") && open) {
       picture.style.zIndex = "10";
       discr.style.zIndex = "10";
       discr.style.display = "flex";
@@ -65,9 +66,8 @@ const showPage = (array, page, container, titleMain) => {
 
       const pictures = document.querySelectorAll(".cell-img");
       const pictArray = Array.from(pictures);
-
       const pictures1 = pictArray?.filter(
-        (item, index) => !item.className.includes("scale")
+        (item) => !item.className.includes(imageId)
       );
 
       pictures1.forEach((element) => {
@@ -78,7 +78,11 @@ const showPage = (array, page, container, titleMain) => {
         element.style.filter = "blur(4px)";
         element.style.zIndex = "0";
       });
-    } else {
+
+      croix.forEach((element) => {
+        element.style.display = "block";
+      });
+    } else if (!open) {
       var animation = picture.animate(
         [{ transform: "scale(1) translate(0)" }],
         500
@@ -98,10 +102,15 @@ const showPage = (array, page, container, titleMain) => {
         element.style.filter = "blur(0px)";
         element.style.zIndex = "0";
       });
-      picture.className = picture.className.replace(" scale", "");
+
+      croix.forEach((element) => {
+        element.style.display = "none";
+      });
+
       picture.style.zIndex = "10";
       discr.style.zIndex = "10";
       discr.style.display = "none";
+
       window.setTimeout(() => (picture.style.zIndex = "0"), 500);
     }
   };
@@ -150,11 +159,15 @@ const showPage = (array, page, container, titleMain) => {
       const cellImg = document.createElement("div");
       cellImg.className = "cell-img img" + element.id;
       cellImg.id = element.type;
+      cellImg.style.zIndex = "40";
       const imag = document.createElement("img");
       imag.src = element.image;
       imag.className = "imag" + element.id;
       const charCroix = document.createElement("div");
       charCroix.innerHTML = "&times;";
+      charCroix.className = "croix";
+      charCroix.id = "croix" + element.id;
+      charCroix.style.zIndex = "50";
       const cellDiscription = document.createElement("div");
       cellDiscription.className = "discription";
       const texteDiscr = element.discription.split("\n");
@@ -193,7 +206,7 @@ const showPage = (array, page, container, titleMain) => {
       let cellTexte = document.createElement("h3");
       cellTexte.textContent = element.name;
 
-      // cellImg.appendChild(charCroix);
+      cellDiscription.appendChild(charCroix);
       cellImg.appendChild(imag);
       cellImg.appendChild(cellDiscription);
       cell.appendChild(cellImg);
@@ -206,8 +219,9 @@ const showPage = (array, page, container, titleMain) => {
 
     pageArrayWithoutFirst.map((element) => {
       const myImage = document.querySelector(".img" + element.id);
-      myImage.addEventListener("click", (e) => openImage(element.id));
-
+      myImage.addEventListener("click", (e) => {
+        openImage(element.id, true);
+      });
       if (page === "produits") {
         const myButton = myImage.querySelector(".butt-panier");
         myButton.addEventListener("click", (e) => {
@@ -215,6 +229,11 @@ const showPage = (array, page, container, titleMain) => {
           basket.addBasket(element);
         });
       }
+      const myCroix = document.querySelector("#croix" + element.id);
+      myCroix.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openImage(element.id, false);
+      });
     });
 
     if (page === "produits") {
@@ -433,9 +452,10 @@ if (containerShoppingcartEmpty) {
     subtitlePanier.addEventListener("click", (e) => {
       imag.style.display = "none";
       conttitlePanier.style.display = "none";
-      document.getElementById("panier-main").style.backgroundColor =
-        "var(--primary-color)";
-
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+        document.getElementById("panier-main").style.backgroundColor =
+          "var(--primary-color)";
+      }
       const spin = document.createElement("div");
       spin.className = "loader";
       containerShoppingcartEmpty.appendChild(spin);
