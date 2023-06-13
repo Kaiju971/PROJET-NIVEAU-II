@@ -12,8 +12,8 @@ function testInfo(messageInput) {
   const ok = re.exec(messageInput.value);
 
   output.textContent = ok
-    ? `Merci, votre message est ${ok[0]}`
-    : `${messageInput.value} information incomplète!`;
+    ? alert(`Merci, votre message est ${ok[0]}`)
+    : alert(`${messageInput.value} information incomplète!`);
 }
 
 form.addEventListener("submit", (event) => {
