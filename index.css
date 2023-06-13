@@ -130,7 +130,7 @@ section {
   color: var(--secondary-color);
 }
 
-@media (max-width: 420px) {
+@media (max-width: 1000px) {
   .body {
     height: 50vh;
   }
