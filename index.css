@@ -214,9 +214,9 @@ section {
   }
 
   .image {
-    margin-top: 0%;
-    height: 18rem;
+    margin-top: -6vh;
+    height: 28vh;
     overflow-y: hidden;
-    margin-top: 2%;
+    /* margin-top: 0; */
   }
 }

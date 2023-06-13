@@ -27,7 +27,7 @@ const showPage = (array, page, container, titleMain) => {
     const picture = document.querySelector(idPict); //cell-img
     const discr = picture.querySelector(".discription");
 
-    const cellTexte = document.querySelectorAll("h4");
+    const cellTexte = document.querySelectorAll("h3");
     const textArray = Array.from(cellTexte);
 
     let anim;
@@ -153,29 +153,27 @@ const showPage = (array, page, container, titleMain) => {
       const imag = document.createElement("img");
       imag.src = element.image;
       imag.className = "imag" + element.id;
+      const charCroix = document.createElement("div");
+      charCroix.innerHTML = "&times;";
       const cellDiscription = document.createElement("div");
       cellDiscription.className = "discription";
       const texteDiscr = element.discription.split("\n");
 
       if (element.page === "produits") {
-        const titleDiscr = document.createElement("h5");
+        const titleDiscr = document.createElement("h4");
         titleDiscr.textContent = element.name;
-        titleDiscr.style.fontSize = "1.2vw";
         titleDiscr.style.fontWeight = "900";
         cellDiscription.appendChild(titleDiscr);
 
         texteDiscr.map((item, index) => {
           const el = document.createElement("h6");
           el.textContent = item;
-          el.style.fontSize = "0.5vw";
           el.style.fontWeight = "400";
-          el.style.lineHeight = 0.5;
           cellDiscription.appendChild(el);
         });
         const br = document.createElement("br");
         cellDiscription.appendChild(br);
-        const br1 = document.createElement("br");
-        cellDiscription.appendChild(br1);
+        cellDiscription.appendChild(br);
 
         const prix = document.createElement("h5");
         prix.textContent = element.price + "€";
@@ -183,9 +181,6 @@ const showPage = (array, page, container, titleMain) => {
 
         const butt = document.createElement("button");
         butt.className = "butt-panier";
-        butt.style.width = "9vw";
-        butt.style.height = "2.1vw";
-
         butt.textContent = "AJOUTER";
         const icon = document.createElement("i");
         icon.className = "fa-solid fa-cart-shopping icon";
@@ -195,9 +190,10 @@ const showPage = (array, page, container, titleMain) => {
         cellDiscription.style.display = "none";
       }
 
-      let cellTexte = document.createElement("h4");
+      let cellTexte = document.createElement("h3");
       cellTexte.textContent = element.name;
 
+      // cellImg.appendChild(charCroix);
       cellImg.appendChild(imag);
       cellImg.appendChild(cellDiscription);
       cell.appendChild(cellImg);
@@ -231,7 +227,7 @@ const showPage = (array, page, container, titleMain) => {
       typesDecor.map((elem, index) => {
         const buttDrop = document.querySelector(".item" + index);
         buttDrop.addEventListener("click", (e) => {
-          const cellTexte = document.querySelectorAll("h4");
+          const cellTexte = document.querySelectorAll("h3");
           const textArray = Array.from(cellTexte);
           const pictures = document.querySelectorAll(".cell-img");
           const pictArray = Array.from(pictures);
@@ -298,8 +294,6 @@ if (containerShoppingcartEmpty) {
     shopCart.forEach((element) => {
       const imag = document.createElement("img");
       imag.src = element.image;
-      imag.style.width = "18rem";
-      imag.style.height = "14rem";
       const nameDescr = document.createElement("div");
       nameDescr.className = "nameDescr";
       const name = document.createElement("div");
@@ -407,7 +401,15 @@ if (containerShoppingcartEmpty) {
     });
   } else {
     //panier vide
-
+    const titlePanier1 = document.createElement("h2");
+    titlePanier1.className = "title-panier1";
+    titlePanier1.textContent = "Panier";
+    containerShoppingcartEmpty.appendChild(titlePanier1);
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      titlePanier1.style.display = "block";
+    } else {
+      titlePanier1.style.display = "none";
+    }
     const conttitlePanier = document.createElement("div");
     conttitlePanier.className = "text-vide";
     const titlePanier = document.createElement("h1");
@@ -422,7 +424,6 @@ if (containerShoppingcartEmpty) {
     imag.src = "../images/PanierVide.PNG";
     imag.style.width = "12rem";
     imag.style.height = "10rem";
-    imag.style.marginRight = "3rem";
 
     conttitlePanier.appendChild(titlePanier);
     conttitlePanier.appendChild(subtitlePanier);
@@ -432,6 +433,9 @@ if (containerShoppingcartEmpty) {
     subtitlePanier.addEventListener("click", (e) => {
       imag.style.display = "none";
       conttitlePanier.style.display = "none";
+      document.getElementById("panier-main").style.backgroundColor =
+        "var(--primary-color)";
+
       const spin = document.createElement("div");
       spin.className = "loader";
       containerShoppingcartEmpty.appendChild(spin);
