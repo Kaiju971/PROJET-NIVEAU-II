@@ -51,6 +51,7 @@ const showTexteBasket = () => {
   texte.textContent = "Votre Panier a été validé avec succés !";
   texte.style.fontSize = "3.6vw";
   texte.style.color = "var(--font-color-blanche)";
+  texte.style.paddingTop = "4vh";
   const charClose = document.createElement("div");
   charClose.innerHTML = "&times;";
   charClose.style.paddingRight = "2vw";
@@ -63,12 +64,5 @@ const showTexteBasket = () => {
   charClose.addEventListener("click", () => (location = "./index.html"));
 };
 const contImg = document.querySelector(".cont-image");
-if (document.referrer.includes("panier")) {
-  console.log(contImg);
-  contImg.style.paddingTop = "0vh";
-
-  showTexteBasket();
-} else {
-  console.log(contImg);
-  contImg.style.paddingTop = "8vh";
-}
+if (document.referrer.includes("panier")) showTexteBasket();
+else contImg.style.paddingTop = "8vh";

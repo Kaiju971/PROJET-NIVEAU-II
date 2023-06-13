@@ -94,8 +94,6 @@ form label,
 .label {
   position: relative;
   text-align: start;
-  left: 0.5vw;
-  width: 5vw;
 }
 
 form .label {
