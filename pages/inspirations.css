@@ -37,9 +37,10 @@ body {
 .container-prod h1 {
   grid-column: 1 / span 3;
   place-self: center stretch;
-  padding-top: 1rem;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   text-align: center;
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .container-prod h4 {
@@ -66,7 +67,7 @@ body {
   }
 
   .container-prod {
-    padding-top: 5%;
+    margin-top: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 10% 30% 30% 30%;
@@ -75,11 +76,14 @@ body {
 
   .container-prod h1 {
     grid-column: 1 / span 2;
-    padding-bottom: 5%;
+    padding-bottom: 1%;
   }
 
+  .container-prod .cell {
+    padding-bottom: 1rem;
+  }
   .container-prod .cell img {
-    width: 60%;
-    height: 80%;
+    width: 70%;
+    height: 100%;
   }
 }

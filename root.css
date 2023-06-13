@@ -12,7 +12,12 @@
   --font-color-blanche: white; /*color: var(--font-color-blanche)*/
   --font-color-kaki: #a5a58d; /*color: var(--font-color-kaki)*/
   --font-color-kaki2: #6b705c; /*color: var(--font-color-kaki2)*/
-  --font-color-marron-light: rgba(203, 153, 126, 1);/*color: var(--font-color-marron-light)*/
+  --font-color-marron-light: rgba(
+    203,
+    153,
+    126,
+    1
+  ); /*color: var(--font-color-marron-light)*/
 
   --font-color-grey: rgba(30, 30, 30, 0.82); /* color: var(--font-color-grey)*/
 
@@ -54,7 +59,7 @@
 .topnav img {
   width: 4rem;
   height: 3rem;
-  padding-right: 1rem;
+  margin-right: 5vw;
 }
 
 .sidenav {
@@ -68,7 +73,7 @@
   padding-top: 80px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   opacity: 0.7;
-  z-index: 11;
+  z-index: 110;
 }
 
 .open-sidenav {
