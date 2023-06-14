@@ -1,4 +1,4 @@
-/////basket////////
+/////basket//////
 
 function saveBasket(basket) {
   localStorage.setItem("basket", JSON.stringify(basket));
