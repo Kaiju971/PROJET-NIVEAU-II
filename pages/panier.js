@@ -13,6 +13,14 @@ export const getBasket = () => {
   }
 };
 
+///des changements
+
+export const emptyBasket = () => {
+  localStorage.clear();
+};
+
+/////
+
 export const addBasket = (product) => {
   let basket = getBasket();
 
@@ -65,8 +73,4 @@ export const getTotalPrice = () => {
     total += product.quantity * product.price;
   }
   return total;
-};
-
-export const emptyBasket = () => {
-  localStorage.clear();
 };
