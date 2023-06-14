@@ -3,20 +3,32 @@ const nom = document.querySelector("#nom");
 const email = document.querySelector("#email");
 const sujet = document.querySelector("#sujet");
 const messageInput = document.querySelector("#message");
-console.log("messageInput " + messageInput);
 const output = document.querySelector("#output");
 
-const re = /^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$/;
+const EmptyFilds = () => {
+  let result = " bien reçu";
 
-function testInfo(messageInput) {
-  const ok = re.exec(messageInput.value);
+  const input = new Map([
+    ["message", messageInput.value],
+    ["nom", nom.value],
+    ["email", email.value],
+    ["sujet", sujet.value],
+  ]);
 
-  output.textContent = ok
-    ? alert(`Merci, votre message est ${ok[0]}`)
-    : alert(`${messageInput.value} information incomplète!`);
-}
+  let ok = true;
+  input.forEach((value, key) => {
+    if (!value) {
+      result = key;
+      ok = false;
+    }
+  });
+
+  ok
+    ? alert(`Merci, votre message est ${result}`)
+    : alert(`information incomplète dans le champs ${result} !`);
+};
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  testInfo(messageInput);
+  EmptyFilds(messageInput);
 });
