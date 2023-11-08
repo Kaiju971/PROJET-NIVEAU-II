@@ -243,8 +243,8 @@ body {
   .container-prod .cell .cell-img {
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    height: 140%;
+    width: 70%;
     margin-left: 0vw;
     margin-top: 0vh;
     padding: 0;
